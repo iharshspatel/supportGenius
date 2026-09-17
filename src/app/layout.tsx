@@ -4,6 +4,7 @@ import { ViewTransition } from "react";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import CalendlyAnalytics from "./components/CalendlyAnalytics";
 import "./globals.css";
 
 /* UI + body. Variable so we can use real 520/560 weights, not just for the demo . */
@@ -86,6 +87,7 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-F1Y1E11D3R');`}
         </Script>
+        <CalendlyAnalytics />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
