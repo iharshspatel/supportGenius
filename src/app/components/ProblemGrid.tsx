@@ -1,6 +1,6 @@
 /**
  * The four things that go wrong for a Shopify app founder as support scales.
- * Problems only — the solution gets its own section further down the page.
+ * Problems only - the solution gets its own section further down the page.
  *
  * Built for scanning: four headlines carry the whole argument, the line under
  * each is optional detail, and the chip names what it costs.

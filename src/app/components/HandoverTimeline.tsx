@@ -1,5 +1,5 @@
 /**
- * The handover, as a sequence — because it is one. A grid of steps was the
+ * The handover, as a sequence - because it is one. A grid of steps was the
  * tell that nobody looked at the page.
  *
  * Three steps, stated plainly: what happens, one line of detail, and what you

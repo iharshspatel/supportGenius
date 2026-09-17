@@ -12,7 +12,7 @@ const inter = Inter({
   display: "swap",
 });
 
-/* Display face. Heavy geometric sans — the headlines are meant to land as
+/* Display face. Heavy geometric sans - the headlines are meant to land as
    weight and shape, not as decoration. */
 const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -30,9 +30,42 @@ const jetbrains = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://thesupportgenius.com"),
   title: "Shopify App Support That Lets Your Team Keep Building | Support Genius",
   description:
     "Shopify-aware support for founder-led app teams. We document your product, run the ticket lifecycle, and send engineering structured issues.",
+  applicationName: "Support Genius",
+  category: "Shopify app support",
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    url: "/",
+    siteName: "Support Genius",
+    title: "Shopify App Support That Lets Your Team Keep Building",
+    description:
+      "Shopify-aware support for founder-led app teams, from merchant conversations to engineering-ready escalations.",
+    images: [{ url: "/logo-full.png", alt: "Support Genius" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Shopify App Support That Lets Your Team Keep Building",
+    description:
+      "Shopify-aware support for founder-led app teams, from merchant conversations to engineering-ready escalations.",
+    images: ["/logo-full.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
   icons: {
     icon: "/favicon.svg",
     shortcut: "/favicon.svg",
@@ -51,6 +84,21 @@ export default function RootLayout({
       className={`${inter.variable} ${jakarta.variable} ${jetbrains.variable}`}
     >
       <body className="font-sans antialiased text-ink bg-canvas min-h-screen flex flex-col">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              name: "Support Genius",
+              url: "https://thesupportgenius.com",
+              logo: "https://thesupportgenius.com/logo-full.png",
+              email: "support@thesupportgenius.com",
+              description:
+                "Shopify app support for founder-led app teams, including merchant support, onboarding playbooks, and technical triage.",
+            }),
+          }}
+        />
         <a
           href="#main"
           className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[200] focus:rounded-md focus:bg-ink focus:px-4 focus:py-2 focus:text-sm focus:text-canvas"

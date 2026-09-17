@@ -36,7 +36,7 @@ const tabs: Tab[] = [
           Re: Discount not applying at checkout
         </p>
         <p className="mt-3 text-[13.5px] leading-relaxed text-ink">
-          Hi Dan — you&apos;ve got two rules stacking, and Shopify only honours
+          Hi Dan - you&apos;ve got two rules stacking, and Shopify only honours
           one. I&apos;ve dropped a screenshot below showing which to turn off.
           <br />
           <br />
@@ -50,7 +50,7 @@ const tabs: Tab[] = [
     key: "playbook",
     label: "Learning your product",
     blurb:
-      "Before we answer anything, we write down how your app actually behaves — including the parts that are a bit odd.",
+      "Before we answer anything, we write down how your app actually behaves - including the parts that are a bit odd.",
     caption: "Your playbook, week two",
     preview: (
       <div className="rounded-xl bg-canvas-soft p-4 text-[13px]">
@@ -67,7 +67,7 @@ const tabs: Tab[] = [
           <span className="font-mono text-[11px] text-ink-mute-2">7 answers</span>
         </Row>
         <Row>
-          <span className="text-ink">Known issues — do not promise a fix</span>
+          <span className="text-ink">Known issues - do not promise a fix</span>
           <span className="font-mono text-[11px] text-primary">4 open</span>
         </Row>
         <Row>

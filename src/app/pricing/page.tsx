@@ -3,14 +3,14 @@ import type { Metadata } from "next";
 import FaqAccordion from "../components/FaqAccordion";
 
 export const metadata: Metadata = {
-  title: "Pricing — $10/hour Flat Shopify App Support | Support Genius",
+  title: "Pricing - $10/hour Flat Shopify App Support | Support Genius",
   description:
     "One rate: $10 an hour for Shopify support experts. No tiers, no setup fee, no per-ticket charge, and a 30-day money-back guarantee.",
 };
 
 /**
  * One price, one page. The old version had three tiers and a comparison matrix
- * with no prices in it — the single biggest trust hole on the site. There is
+ * with no prices in it - the single biggest trust hole on the site. There is
  * nothing to compare now, so the page spends its space on what an hour buys
  * and on the guarantee instead.
  */
@@ -19,7 +19,7 @@ const included = [
   "24/7 app support across your channels",
   "Email support in your tone, from your docs",
   "Live chat while merchants are still in the app",
-  "Social media replies — tweets, DMs, comments",
+  "Social media replies - tweets, DMs, comments",
   "Bug reports with repro steps, versions and logs",
   "Helpdesk management: sorting, tagging, clearing the queue",
   "Your support docs written and kept current",
@@ -53,7 +53,7 @@ const faqs = [
   },
   {
     q: "How many hours will we need?",
-    a: "It depends on your ticket volume and how many channels you want covered. We estimate it on the call from your existing ticket history, then adjust once real numbers come in — up in a busy month, down in a quiet one.",
+    a: "It depends on your ticket volume and how many channels you want covered. We estimate it on the call from your existing ticket history, then adjust once real numbers come in - up in a busy month, down in a quiet one.",
   },
   {
     q: "How does the 30-day money-back guarantee work?",
@@ -65,7 +65,7 @@ const faqs = [
   },
   {
     q: "What happens when volume spikes?",
-    a: "You book more hours for that month. Black Friday, a launch, an App Store feature — the rate does not change and neither does the team answering.",
+    a: "You book more hours for that month. Black Friday, a launch, an App Store feature - the rate does not change and neither does the team answering.",
   },
 ];
 
@@ -169,7 +169,7 @@ export default function PricingPage() {
             <p className="text-[16px] leading-[1.65] text-white/60">
               Handing over your inbox is a real risk, so we carry some of it.
               Give it a month. If the replies are not up to your standard, say
-              so and we refund what you have paid for that period — no notice
+              so and we refund what you have paid for that period - no notice
               period, no argument, and you keep the support docs we wrote.
             </p>
           </div>

@@ -1,5 +1,5 @@
 /**
- * The six things we actually do, one card each. No tabs — the previous version
+ * The six things we actually do, one card each. No tabs - the previous version
  * hid five of six behind a click, and visitors scan rather than click.
  *
  * Each card is a channel name plus one sentence. The icon tint is there to
@@ -24,7 +24,7 @@ const s = {
 const services: Service[] = [
   {
     name: "24/7 app support",
-    body: "Your merchants get a real answer at 2am their time — not whenever you next open the laptop.",
+    body: "Your merchants get a real answer at 2am their time - not whenever you next open the laptop.",
     tint: "chip-orange",
     icon: (
       <svg viewBox="0 0 24 24" {...s}>
@@ -56,7 +56,7 @@ const services: Service[] = [
   },
   {
     name: "Social media support",
-    body: "Frustrated tweets and “how does this work?” DMs get a fast, warm reply — in public, before they harden.",
+    body: "Frustrated tweets and “how does this work?” DMs get a fast, warm reply - in public, before they harden.",
     tint: "chip-pink",
     icon: (
       <svg viewBox="0 0 24 24" {...s}>

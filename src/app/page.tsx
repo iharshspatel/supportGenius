@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 };
 
 /* --------------------------------------------------------------------------
- * TODO — real numbers needed from the business.
+ * TODO - real numbers needed from the business.
  * Leaving `price: null` renders an honest "quoted on the call" line rather
  * than a pricing card with no price on it, which is the single biggest trust
  * hole on the old page. Fill these in and the cards start doing their job.
@@ -57,7 +57,7 @@ const notForYou = [
   },
   {
     title: "Your app is not on Shopify",
-    body: "Everything we know is Shopify-shaped — embeds, collaborator access, App Store review, the billing API. On a different platform we would be starting from zero, same as anyone.",
+    body: "Everything we know is Shopify-shaped - embeds, collaborator access, App Store review, the billing API. On a different platform we would be starting from zero, same as anyone.",
   },
   {
     title: "You just want the queue cleared",
@@ -84,7 +84,7 @@ const faqs = [
   },
   {
     q: "Can we stop?",
-    a: "Thirty days notice, and the playbook and knowledge base are yours to keep — they are written in your account, not ours. If you bring support back in-house, whoever takes it over inherits everything we wrote.",
+    a: "Thirty days notice, and the playbook and knowledge base are yours to keep - they are written in your account, not ours. If you bring support back in-house, whoever takes it over inherits everything we wrote.",
   },
 ];
 
@@ -172,8 +172,8 @@ export default function Home() {
           <p className="eyebrow">What we do</p>
           <h2 className="display-xl mt-4">Six ways support leaves your desk</h2>
           <p className="mt-6 text-[17px] leading-[1.65] text-ink-mute">
-            All of it handled by Shopify experts — real people who already know
-            themes, embeds and checkout — on a flat block of hours each month.
+            All of it handled by Shopify experts - real people who already know
+            themes, embeds and checkout - on a flat block of hours each month.
             Not bots, and not billed per ticket.
           </p>
         </div>
@@ -214,7 +214,7 @@ export default function Home() {
               </h2>
               <p className="mt-6 text-[17px] leading-[1.65] text-white/60">
                 Flat rate. No recruiter, no payroll, no three-month ramp. The
-                same trained people answer your merchants every day — they are
+                same trained people answer your merchants every day - they are
                 just not on your books.
               </p>
 
@@ -341,7 +341,7 @@ export default function Home() {
         <div data-reveal className="measure-wide">
           <h2 className="display-xl">Send us your worst recurring ticket</h2>
           <p className="mt-6 text-[17px] leading-[1.65] text-ink-mute">
-            Genuinely — paste the question you are most tired of answering into
+            Genuinely - paste the question you are most tired of answering into
             the form. We will come to the call with a draft reply and a help-doc
             outline for it, whether or not you hire us. It is the fastest way to
             see whether we understand your product.

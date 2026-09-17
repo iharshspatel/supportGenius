@@ -92,10 +92,10 @@ export default function Footer() {
                 a website.
               </p>
               <a
-                href="mailto:hello@thesupportgenius.com"
+                href="mailto:support@thesupportgenius.com"
                 className="link-inline mt-2 inline-block text-[13px]"
               >
-                hello@thesupportgenius.com
+                support@thesupportgenius.com
               </a>
             </div>
           </div>
@@ -127,10 +127,10 @@ export default function Footer() {
               Privacy Policy
             </Link>
             <a
-              href="mailto:hello@thesupportgenius.com"
+              href="mailto:support@thesupportgenius.com"
               className="link-inline font-medium"
             >
-              hello@thesupportgenius.com
+              support@thesupportgenius.com
             </a>
           </div>
         </div>

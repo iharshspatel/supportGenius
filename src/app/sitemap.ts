@@ -21,6 +21,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/services/support-onboarding-playbooks",
     "/services/technical-support-triage",
     "/blog/when-to-outsource-shopify-app-support",
+    "/blog/in-house-vs-outsourced-shopify-app-support",
+    "/blog/shopify-app-support-cost",
+    "/blog/shopify-app-support-kpis",
   ];
 
   return staticRoutes.map((route) => ({

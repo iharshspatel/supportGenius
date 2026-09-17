@@ -2,11 +2,15 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import FaqAccordion from "../components/FaqAccordion";
 import ScrollReveal from "../components/ScrollReveal";
+import ContactForm from "../components/ContactForm";
 
 export const metadata: Metadata = {
   title: "Contact Support Genius | Shopify App Support",
   description:
     "Tell us about your Shopify app, ticket volume, and support goals. We will help you assess the right support setup for your team.",
+  alternates: {
+    canonical: "/contact",
+  },
 };
 
 export default function Contact() {
@@ -62,7 +66,7 @@ export default function Contact() {
             <div className="card-feature-light p-5 sm:p-8 lg:p-9 border border-[#dfdfdf]">
               <span className="spotlight-glow" />
 
-              <form action="/thank-you" method="GET" className="space-y-5 sm:space-y-6">
+              <ContactForm className="space-y-5 sm:space-y-6">
                 <div className="grid gap-5 sm:gap-6 sm:grid-cols-2">
                   <div>
                     <label htmlFor="name" className="block text-[14px] font-medium text-[#171717]">
@@ -171,7 +175,7 @@ export default function Contact() {
                     type="submit"
                     className="btn-primary w-full sm:w-auto"
                   >
-                    Book a discovery call
+                    Create email inquiry
                   </button>
                 </div>
 
@@ -179,10 +183,10 @@ export default function Contact() {
                 <div className="pt-2 border-t border-[#ededed]">
                   <p className="text-[13px] text-[#707070] leading-relaxed">
                     We use the details you share to understand your support setup and respond to your inquiry.
-                    Please do not include merchant passwords, payment details, or sensitive personal data in this form.
+                    Please do not include merchant passwords, payment details, or sensitive personal data in this form. Submitting opens a prefilled email draft for you to review and send.
                   </p>
                 </div>
-              </form>
+              </ContactForm>
             </div>
           </ScrollReveal>
 
@@ -212,10 +216,10 @@ export default function Contact() {
                 <h3 className="font-medium text-[14px] text-[#171717]">Prefer a direct message?</h3>
                 <p className="mt-1 text-[13px] text-[#707070]">Drop us an email anytime:</p>
                 <a
-                  href="mailto:hello@thesupportgenius.com"
+                  href="mailto:support@thesupportgenius.com"
                   className="mt-2.5 inline-block font-medium text-[14px] text-[#171717] hover:text-[#3ecf8e] transition-colors"
                 >
-                  hello@thesupportgenius.com
+                  support@thesupportgenius.com
                 </a>
               </div>
             </ScrollReveal>

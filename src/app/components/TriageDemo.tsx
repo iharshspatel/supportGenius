@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 
 /**
  * The hero's centrepiece: one merchant ticket walked through the lifecycle we
- * sell — arrives, answered from the playbook, escalated with a real repro,
+ * sell - arrives, answered from the playbook, escalated with a real repro,
  * looped back into the docs.
  *
  * Built to be SCANNED, not read. Each step is one headline plus one small
@@ -199,7 +199,7 @@ export default function TriageDemo() {
 
         {step === 3 && (
           <div className="space-y-4">
-            <Headline>Fixed once — then it stops coming back.</Headline>
+            <Headline>Fixed once - then it stops coming back.</Headline>
 
             <div className="space-y-2">
               <Row i={1} mark="3×">

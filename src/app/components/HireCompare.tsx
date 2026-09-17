@@ -1,6 +1,6 @@
 /**
- * The hire-vs-us section. This is the close for problem 04 — hiring is slow,
- * expensive and messy — so it is framed as the same decision, priced two ways.
+ * The hire-vs-us section. This is the close for problem 04 - hiring is slow,
+ * expensive and messy - so it is framed as the same decision, priced two ways.
  *
  * Six rows, scannable down either column. No interaction: the whole argument
  * is visible without a click.
@@ -9,7 +9,7 @@
 const rows = [
   {
     label: "Cost",
-    hire: "Salary, benefits and payroll — every month, busy or quiet",
+    hire: "Salary, benefits and payroll - every month, busy or quiet",
     us: "$10 an hour, only for the hours you book",
   },
   {
@@ -20,7 +20,7 @@ const rows = [
   {
     label: "Shopify knowledge",
     hire: "You teach it, in the hours you do not have",
-    us: "Already there on day one — themes, embeds, checkout, the lot",
+    us: "Already there on day one - themes, embeds, checkout, the lot",
   },
   {
     label: "Coverage",
@@ -42,7 +42,7 @@ const rows = [
 export default function HireCompare() {
   return (
     <div className="overflow-hidden rounded-[16px] border border-hairline-night bg-white/[0.02]">
-      {/* Column headers — desktop only */}
+      {/* Column headers - desktop only */}
       <div className="hidden grid-cols-[minmax(0,150px)_1fr_1fr] gap-6 border-b border-white/8 px-6 py-3.5 md:grid">
         <span />
         <span className="font-mono text-[10.5px] uppercase tracking-[0.12em] text-white/35">

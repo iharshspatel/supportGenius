@@ -1,6 +1,6 @@
 /**
  * Three moments from a founder's support inbox, shown before and after a
- * support layer — side by side, in one glance.
+ * support layer - side by side, in one glance.
  *
  * This used to be a toggle. Nobody toggles. A scanner saw only the "before"
  * half and left without the argument, so both states are on screen at once
@@ -95,7 +95,7 @@ function Cell({
 export default function InboxCompare() {
   return (
     <div>
-      {/* Column headers — desktop only; each cell carries its own tag on mobile */}
+      {/* Column headers - desktop only; each cell carries its own tag on mobile */}
       <div className="mb-3 hidden grid-cols-2 gap-px px-6 md:grid">
         <p className="font-mono text-[10.5px] uppercase tracking-[0.12em] text-ink-mute-2">
           Right now

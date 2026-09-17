@@ -65,8 +65,8 @@ export default function ThankYouPage() {
               <span className="status-dot-green mt-2 shrink-0" />
               <span>
                 If you need to correct something in your message, contact us at{" "}
-                <a href="mailto:hello@thesupportgenius.com" className="font-medium text-[#171717] underline hover:text-[#3ecf8e]">
-                  hello@thesupportgenius.com
+                <a href="mailto:support@thesupportgenius.com" className="font-medium text-[#171717] underline hover:text-[#3ecf8e]">
+                  support@thesupportgenius.com
                 </a>
                 .
               </span>

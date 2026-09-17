@@ -8,7 +8,7 @@
    ========================================================================== */
 
 @theme {
-  /* Ink — deep navy rather than neutral grey. Warmer, more confident. */
+  /* Ink - deep navy rather than neutral grey. Warmer, more confident. */
   --color-ink: #0e1533;
   --color-ink-secondary: #232d4f;
   --color-ink-mute: #5b6685;
@@ -41,7 +41,7 @@
   --color-primary-wash: #fff0e9;
   --color-primary-edge: #ffd5c2;
 
-  /* Category chips — colour carries meaning, not decoration */
+  /* Category chips - colour carries meaning, not decoration */
   --color-violet: #7c4dff;
   --color-violet-wash: #f1ecff;
   --color-blue: #2563eb;
@@ -86,7 +86,7 @@
   --font-mono: var(--font-mono-jb), "JetBrains Mono", ui-monospace, Menlo,
     Monaco, Consolas, monospace;
 
-  /* Motion vocabulary — one set of curves for the whole site */
+  /* Motion vocabulary - one set of curves for the whole site */
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-in-out-soft: cubic-bezier(0.65, 0, 0.35, 1);
@@ -103,7 +103,7 @@
   --dur-4: 520ms;
   --dur-5: 800ms;
 
-  /* Elevation — soft, wide, low-opacity. Never a hard drop shadow. */
+  /* Elevation - soft, wide, low-opacity. Never a hard drop shadow. */
   --shadow-sm: 0 1px 2px rgba(14, 21, 51, 0.05);
   --shadow-md: 0 4px 16px -4px rgba(14, 21, 51, 0.08),
     0 1px 3px rgba(14, 21, 51, 0.04);
@@ -119,7 +119,7 @@ html {
   scroll-behavior: smooth;
   background-color: var(--color-canvas);
   color: var(--color-ink);
-  /* clip, not hidden — `hidden` makes html a scroll container and kills the
+  /* clip, not hidden - `hidden` makes html a scroll container and kills the
      scroll-driven view() timelines used for reveals further down. */
   overflow-x: clip;
 }
@@ -149,7 +149,7 @@ body {
 }
 
 /* ==========================================================================
-   Typography — heavy geometric display against a neutral UI sans.
+   Typography - heavy geometric display against a neutral UI sans.
    No `color` on the display classes: headings inherit ink from <body> so a
    utility like `text-white` can win on a dark section (equal specificity,
    and this stylesheet loads after Tailwind's utilities).
@@ -301,7 +301,7 @@ body {
 }
 
 /* ==========================================================================
-   Buttons — pills. Primary is ink navy; orange stays a highlight colour.
+   Buttons - pills. Primary is ink navy; orange stays a highlight colour.
    ========================================================================== */
 
 .btn-primary,
@@ -386,7 +386,7 @@ body {
   transform: scale(0.98);
 }
 
-/* The arrow nudges on hover — the one flourish worth keeping on a button */
+/* The arrow nudges on hover - the one flourish worth keeping on a button */
 .btn-primary .arw,
 .btn-secondary .arw,
 .btn-ghost .arw {
@@ -454,7 +454,7 @@ body {
   border-color: #3d4878;
 }
 
-/* Icon chip — a tinted rounded square. Colour is the category. */
+/* Icon chip - a tinted rounded square. Colour is the category. */
 .chip {
   display: inline-flex;
   align-items: center;
@@ -473,7 +473,7 @@ body {
 .chip-amber { background-color: var(--color-amber-wash); color: var(--color-amber); }
 .chip-green { background-color: var(--color-signal-ok-wash); color: var(--color-signal-ok); }
 
-/* One chip per group is solid, for contrast — the wizzy trick */
+/* One chip per group is solid, for contrast - the wizzy trick */
 .chip-solid {
   background-image: linear-gradient(140deg, #8b5cff, #5b21d6);
   color: #ffffff;
@@ -583,7 +583,7 @@ body {
   color: #ffffff;
 }
 
-/* Hero wash — a wide, soft colour bloom behind the fold */
+/* Hero wash - a wide, soft colour bloom behind the fold */
 .hero-wash {
   position: relative;
   isolation: isolate;
@@ -838,7 +838,7 @@ body {
   animation: msg-in var(--dur-4) var(--ease-spring) both;
 }
 
-/* 4. Floating hero fragments — slow, tiny, offset drifts. Enough to make the
+/* 4. Floating hero fragments - slow, tiny, offset drifts. Enough to make the
       layers read as depth; not enough to notice as an animation. */
 @keyframes float-a {
   0%, 100% { transform: translate3d(0, 0, 0); }

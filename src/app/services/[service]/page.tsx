@@ -137,7 +137,7 @@ const serviceDataMap: Record<string, ServiceData> = {
           "2. Enabled toggle but forgot to click Save before refreshing preview cache.",
           "3. Tested with test store product #8849201; verified collaborator theme permissions are intact.",
         ],
-        severity: "Medium — merchant unblocked via temporary macro, bug logged for auto-save prompt.",
+        severity: "Medium - merchant unblocked via temporary macro, bug logged for auto-save prompt.",
       },
     },
     collaborationTable: {

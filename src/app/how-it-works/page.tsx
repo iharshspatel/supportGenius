@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 /**
  * The deep-dive version of the handover section on the homepage. Same four
- * steps, same timings, same words — this page just has room for the detail
+ * steps, same timings, same words - this page just has room for the detail
  * underneath each one.
  */
 
@@ -55,7 +55,7 @@ const phases = [
 
 const owned = [
   "Day-to-day merchant conversations across the channels we cover",
-  "The playbook and help docs — kept current as the product changes",
+  "The playbook and help docs - kept current as the product changes",
   "Ticket triage, investigation notes, and escalations with repro steps attached",
   "Weekly trend reporting and the product friction we keep running into",
 ];
@@ -64,7 +64,7 @@ const retained = [
   "Roadmap, feature decisions, and everything your engineers own",
   "Final say on refunds, pricing exceptions, and commercial calls",
   "Access decisions and any action that touches sensitive merchant data",
-  "Priority — you decide what gets fixed first",
+  "Priority - you decide what gets fixed first",
 ];
 
 const faqs = [
@@ -82,7 +82,7 @@ const faqs = [
   },
   {
     q: "What does it cost?",
-    a: "$10 an hour, flat, for the hours you book. No setup fee, no per-ticket charge, and you can change the hours in any month — including down, in a quiet one.",
+    a: "$10 an hour, flat, for the hours you book. No setup fee, no per-ticket charge, and you can change the hours in any month - including down, in a quiet one.",
   },
 ];
 
@@ -99,7 +99,7 @@ export default function HowItWorksPage() {
             </h1>
             <p className="mt-6 max-w-[40rem] text-[17.5px] leading-[1.62] text-ink-mute">
               Nobody drops into your inbox on day one and starts guessing.
-              Three steps — and you are only hands-on for the first one.
+              Three steps - and you are only hands-on for the first one.
             </p>
 
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
