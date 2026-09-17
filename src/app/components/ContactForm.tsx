@@ -2,41 +2,49 @@
 
 import { useState, type FormEvent, type ReactNode } from "react";
 
-type ContactFormProps = {
-  children: ReactNode;
-  className?: string;
-};
+const formspreeEndpoint = "https://formspree.io/f/moevqkqr";
+
+type ContactFormProps = { children: ReactNode; className?: string };
 
 export default function ContactForm({ children, className }: ContactFormProps) {
   const [status, setStatus] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    setStatus("");
+    setIsSubmitting(true);
 
-    const fields = new FormData(event.currentTarget);
-    const details = [
-      ["Name", fields.get("name")],
-      ["Work email", fields.get("email")],
-      ["Company and Shopify app URL", fields.get("company")],
-      ["Monthly ticket volume", fields.get("volume") || "Not provided"],
-      ["Current contact channels", fields.get("channels") || "Not provided"],
-      ["Support challenge", fields.get("challenge")],
-      ["Preferred follow-up", fields.get("meetingPreference")],
-    ]
-      .map(([label, value]) => `${label}: ${value}`)
-      .join("\n\n");
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+    if (String(formData.get("website") ?? "")) return;
 
-    const subject = "Support Genius discovery inquiry";
-    window.location.href = `mailto:support@thesupportgenius.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(details)}`;
-    setStatus("Your email draft is ready. Review it and send it to complete your inquiry.");
+    try {
+      const response = await fetch(formspreeEndpoint, {
+        method: "POST",
+        headers: { Accept: "application/json" },
+        body: formData,
+      });
+
+      if (!response.ok) {
+        setStatus("We could not send your inquiry. Please try again or email dhruv.mangla@thesupportgenius.com.");
+        return;
+      }
+
+      form.reset();
+      setStatus("Thanks - your inquiry has been sent. We will reply soon.");
+    } catch {
+      setStatus("We could not send your inquiry. Please try again or email dhruv.mangla@thesupportgenius.com.");
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   return (
-    <form onSubmit={handleSubmit} className={className}>
+    <form onSubmit={handleSubmit} className={className} aria-busy={isSubmitting}>
+      <input type="text" name="website" tabIndex={-1} autoComplete="off" aria-hidden="true" className="hidden" />
       {children}
-      <p aria-live="polite" className="mt-3 text-sm text-[#707070]">
-        {status}
-      </p>
+      <p aria-live="polite" className="mt-3 text-sm text-[#707070]">{status}</p>
     </form>
   );
 }

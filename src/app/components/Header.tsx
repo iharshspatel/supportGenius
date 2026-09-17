@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
+import { CALENDLY_BOOKING_URL } from "../lib/calendly";
 
 export default function Header() {
   const pathname = usePathname();
@@ -64,7 +65,7 @@ export default function Header() {
 
           {/* Right CTA */}
           <div className="hidden items-center md:flex">
-            <Link href="/contact" className="btn-primary">
+            <Link href={CALENDLY_BOOKING_URL} className="btn-primary">
               Book a call
             </Link>
           </div>
@@ -126,7 +127,7 @@ export default function Header() {
 
               <div className="pt-4 mt-2 border-t border-hairline">
                 <Link
-                  href="/contact"
+                  href={CALENDLY_BOOKING_URL}
                   onClick={() => setIsMobileMenuOpen(false)}
                   className="btn-primary w-full py-2.5 text-center justify-center"
                 >

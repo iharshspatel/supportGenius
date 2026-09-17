@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import FaqAccordion from "../components/FaqAccordion";
+import { CALENDLY_BOOKING_URL } from "../lib/calendly";
 
 export const metadata: Metadata = {
   title: "Pricing - $10/hour Flat Shopify App Support | Support Genius",
@@ -87,7 +88,7 @@ export default function PricingPage() {
             </p>
 
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-              <Link href="/contact" className="btn-primary">
+              <Link href={CALENDLY_BOOKING_URL} className="btn-primary">
                 Book a 30-minute call
               </Link>
               <Link href="/how-it-works" className="btn-secondary">
@@ -144,7 +145,7 @@ export default function PricingPage() {
               ))}
             </div>
 
-            <Link href="/contact" className="btn-primary mt-7 w-full">
+            <Link href={CALENDLY_BOOKING_URL} className="btn-primary mt-7 w-full">
               Book a 30-minute call
             </Link>
           </div>
@@ -220,7 +221,7 @@ export default function PricingPage() {
               with a number. The first 30 days are covered either way.
             </p>
             <div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
-              <Link href="/contact" className="btn-primary">
+              <Link href={CALENDLY_BOOKING_URL} className="btn-primary">
                 Book a 30-minute call
               </Link>
               <Link href="/how-it-works" className="btn-secondary">

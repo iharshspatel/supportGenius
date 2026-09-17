@@ -79,7 +79,7 @@
   --radius-xl: 24px;
   --radius-full: 9999px;
 
-  --font-display: var(--font-jakarta), "Plus Jakarta Sans", -apple-system,
+  --font-display: var(--font-inter), "Inter", -apple-system,
     BlinkMacSystemFont, "Segoe UI", sans-serif;
   --font-sans: var(--font-inter), "Inter", -apple-system, BlinkMacSystemFont,
     "Segoe UI", Roboto, sans-serif;
@@ -163,6 +163,21 @@ body {
   font-family: var(--font-display);
   font-weight: 800;
   text-wrap: balance;
+}
+
+/* Use the same compact, high-impact display treatment for headings created
+   directly in pages as well as headings using the display utility classes. */
+h1,
+h2 {
+  font-family: var(--font-display);
+  font-weight: 800 !important;
+  letter-spacing: -0.045em;
+}
+
+h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.025em;
 }
 
 .display-xxl {

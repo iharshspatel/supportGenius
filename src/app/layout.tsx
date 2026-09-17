@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 import { ViewTransition } from "react";
-import { Inter, Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google";
+import { Inter, JetBrains_Mono } from "next/font/google";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import "./globals.css";
@@ -12,13 +12,6 @@ const inter = Inter({
   variable: "--font-inter",
   display: "swap",
 }); 
-
-const jakarta = Plus_Jakarta_Sans({
-  subsets: ["latin"],
-  weight: ["700", "800"],
-  variable: "--font-jakarta",
-  display: "swap",
-});
 
 /* Reserved for product surfaces: ticket ids, repro steps, log lines. */
 const jetbrains = JetBrains_Mono({
@@ -80,7 +73,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${jakarta.variable} ${jetbrains.variable}`}
+      className={`${inter.variable} ${jetbrains.variable}`}
     >
       <body className="font-sans antialiased text-ink bg-canvas min-h-screen flex flex-col">
         <Script

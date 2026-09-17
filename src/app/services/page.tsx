@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import FaqAccordion from "../components/FaqAccordion";
+import { CALENDLY_BOOKING_URL } from "../lib/calendly";
 
 export const metadata: Metadata = {
   title: "Shopify App Support Services | Support Genius",
@@ -100,7 +101,7 @@ export default function Services() {
               <Link href="/contact" className="btn-primary py-3.5 px-7 text-base">
                 Get a support assessment
               </Link>
-              <Link href="/contact" className="btn-secondary py-3.5 px-7 text-base">
+              <Link href={CALENDLY_BOOKING_URL} className="btn-secondary py-3.5 px-7 text-base">
                 Book a discovery call
               </Link>
             </div>
@@ -242,7 +243,7 @@ export default function Services() {
             The goal is not just to answer more tickets. It is to make support easier to manage, measure, and improve.
           </p>
           <div className="mt-8 flex flex-col sm:flex-row gap-4">
-            <Link href="/contact" className="btn-primary py-3 px-6">
+            <Link href={CALENDLY_BOOKING_URL} className="btn-primary py-3 px-6">
               Build your support plan
             </Link>
             <Link href="/how-it-works" className="btn-secondary py-3 px-6">
@@ -271,7 +272,7 @@ export default function Services() {
           </div>
 
           <div className="mt-12 flex flex-col sm:flex-row gap-4 border-t border-hairline pt-8">
-            <Link href="/contact" className="btn-primary py-3 px-6">
+            <Link href={CALENDLY_BOOKING_URL} className="btn-primary py-3 px-6">
               Book a discovery call
             </Link>
             <Link href="/blog/when-to-outsource-shopify-app-support" className="btn-secondary py-3 px-6">

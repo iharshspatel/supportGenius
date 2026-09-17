@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import FaqAccordion from "../../components/FaqAccordion";
+import { CALENDLY_BOOKING_URL } from "../../lib/calendly";
 
 type ServiceData = {
   titleTag: string;
@@ -128,7 +129,7 @@ const serviceDataMap: Record<string, ServiceData> = {
       "Give your merchants a dependable support experience without turning your founders or developers into the always-on inbox. Support Genius learns your app, follows your approved support process, and keeps the right conversations moving.",
     badge: "Managed Frontline Support",
     primaryCta: { label: "Get a support assessment", href: "/contact" },
-    secondaryCta: { label: "Book a discovery call", href: "/contact" },
+    secondaryCta: { label: "Book a discovery call", href: CALENDLY_BOOKING_URL },
     bottomPrimaryCta: { label: "Talk through your ticket volume", href: "/contact" },
     bottomSecondaryCta: { label: "See all support services", href: "/services" },
     contextSection: {

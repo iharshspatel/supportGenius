@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import { CALENDLY_BOOKING_URL } from "../lib/calendly";
 
 export const metadata: Metadata = {
   title: "Thank You | Support Genius",
@@ -33,7 +34,7 @@ export default function ThankYouPage() {
               <span className="status-dot-green mt-2 shrink-0" />
               <span>
                 If you prefer to choose a time now,{" "}
-                <Link href="/contact" className="font-medium text-[#171717] underline hover:text-[#3ecf8e]">
+                <Link href={CALENDLY_BOOKING_URL} className="font-medium text-[#171717] underline hover:text-[#3ecf8e]">
                   book a discovery call on our calendar
                 </Link>
                 .

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import { CALENDLY_BOOKING_URL } from "../lib/calendly";
 
 export const metadata: Metadata = {
   title: "About Support Genius | Shopify App Support Specialists",
@@ -153,7 +154,7 @@ export default function About() {
                 </p>
                 <div className="mt-6 flex items-center gap-4 text-xs font-medium text-ink">
                   <Link
-                    href="/contact"
+                    href={CALENDLY_BOOKING_URL}
                     className="hover:text-primary transition-colors underline underline-offset-4"
                   >
                     Schedule a conversation with our team &rarr;
@@ -206,7 +207,7 @@ export default function About() {
               trends, and keep product decisions where they belong - with the people who own the product.
             </p>
             <div className="mt-8 flex flex-col sm:flex-row gap-4">
-              <Link href="/contact" className="btn-primary py-3.5 px-7 text-base">
+              <Link href={CALENDLY_BOOKING_URL} className="btn-primary py-3.5 px-7 text-base">
                 Book a discovery call
               </Link>
               <Link href="/how-it-works" className="btn-secondary py-3.5 px-7 text-base">

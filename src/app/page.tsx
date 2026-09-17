@@ -6,6 +6,7 @@ import ProblemGrid from "./components/ProblemGrid";
 import HireCompare from "./components/HireCompare";
 import ServiceGrid from "./components/ServiceGrid";
 import HandoverTimeline from "./components/HandoverTimeline";
+import { CALENDLY_BOOKING_URL } from "./lib/calendly";
 
 export const metadata: Metadata = {
   title: "Shopify App Support Outsourcing | Support Genius",
@@ -125,7 +126,7 @@ export default function Home() {
               className="msg-in mt-9 flex flex-wrap items-center gap-x-7 gap-y-4"
               style={{ animationDelay: "620ms" }}
             >
-              <Link href="/contact" className="btn-primary">
+              <Link href={CALENDLY_BOOKING_URL} className="btn-primary">
                 Book a 30-minute call
               </Link>
               <Link
@@ -230,7 +231,7 @@ export default function Home() {
                 No setup fee · No per-ticket charge · Change hours any month
               </p>
 
-              <Link href="/contact" className="btn-primary btn-invert mt-9">
+              <Link href={CALENDLY_BOOKING_URL} className="btn-primary btn-invert mt-9">
                 Book a 30-minute call
               </Link>
             </div>
@@ -347,7 +348,7 @@ export default function Home() {
             see whether we understand your product.
           </p>
           <div className="mt-9 flex flex-wrap items-center gap-x-7 gap-y-4">
-            <Link href="/contact" className="btn-primary">
+            <Link href={CALENDLY_BOOKING_URL} className="btn-primary">
               Book a 30-minute call
             </Link>
             <Link

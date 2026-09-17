@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import ScrollReveal from "../components/ScrollReveal";
+import { CALENDLY_BOOKING_URL } from "../lib/calendly";
 
 export const metadata: Metadata = {
   title: "Shopify App Support Resources | Support Genius",
@@ -162,17 +163,17 @@ export default function BlogHub() {
               >
                 <span className="spotlight-glow" />
                 <div>
-                  <span className="text-[11px] font-mono text-[#3ecf8e] uppercase tracking-wider">
+                  <span className="text-[11px] font-mono text-primary uppercase tracking-wider">
                     {art.category}
                   </span>
-                  <h3 className="mt-3 text-[18px] font-medium text-[#171717] group-hover:text-[#3ecf8e] transition-colors leading-snug">
+                  <h3 className="mt-3 text-[18px] font-medium text-ink group-hover:text-primary transition-colors leading-snug">
                     {art.title}
                   </h3>
-                  <p className="mt-2 text-[14px] text-[#707070] leading-relaxed">
+                  <p className="mt-2 text-[14px] text-ink-mute leading-relaxed">
                     {art.excerpt}
                   </p>
                 </div>
-                <div className="mt-6 pt-4 border-t border-[#ededed] flex items-center justify-between text-[12px] text-[#707070]">
+                <div className="mt-6 pt-4 border-t border-hairline-cool flex items-center justify-between text-[12px] text-ink-mute">
                   <span>{art.author}</span>
                   <span>{art.date}</span>
                 </div>
@@ -197,7 +198,7 @@ export default function BlogHub() {
               <Link href="/contact" className="btn-primary w-full sm:w-auto text-center">
                 Get a support assessment
               </Link>
-              <Link href="/contact" className="btn-secondary w-full sm:w-auto text-center">
+              <Link href={CALENDLY_BOOKING_URL} className="btn-secondary w-full sm:w-auto text-center">
                 Book a discovery call
               </Link>
             </div>

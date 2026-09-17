@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import FaqAccordion from "../components/FaqAccordion";
+import { CALENDLY_BOOKING_URL } from "../lib/calendly";
 
 export const metadata: Metadata = {
   title: "How the Handover Works | Support Genius",
@@ -103,7 +104,7 @@ export default function HowItWorksPage() {
             </p>
 
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-              <Link href="/contact" className="btn-primary">
+              <Link href={CALENDLY_BOOKING_URL} className="btn-primary">
                 Book a 30-minute call
               </Link>
               <Link href="/services" className="btn-secondary">
@@ -286,7 +287,7 @@ export default function HowItWorksPage() {
               are still answering yourself at 11pm.
             </p>
             <div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
-              <Link href="/contact" className="btn-primary">
+              <Link href={CALENDLY_BOOKING_URL} className="btn-primary">
                 Book a 30-minute call
               </Link>
               <Link href="/services" className="btn-secondary">
