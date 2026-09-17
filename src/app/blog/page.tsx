@@ -28,7 +28,7 @@ export default function BlogHub() {
       desc: "Reduce friction during installation, setup, and first value so customers can move forward sooner.",
     },
   ];
-
+//this 
   const articles = [
     {
       category: "Outsourcing decisions",

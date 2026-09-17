@@ -7,7 +7,7 @@ import Footer from "./components/Footer";
 import CalendlyAnalytics from "./components/CalendlyAnalytics";
 import "./globals.css";
 
-/* UI + body. Variable so we can use real 520/560 weights, not just for the demo . */
+/* UI + body. Variable so we can use real 520/560 weights, not just for the demo. llllll */
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
