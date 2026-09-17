@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 
@@ -33,19 +32,9 @@ export default function Header() {
         <div className="mx-auto flex h-16 max-w-[1280px] items-center justify-between px-6">
           {/* Brand Logo & Wordmark */}
           <div className="flex items-center gap-8">
-            <Link href="/" className="group flex shrink-0 items-center gap-2.5">
-              <div className="relative h-8 w-8 overflow-hidden rounded-[8px] border border-hairline transition-transform duration-150 group-hover:scale-105 shadow-xs">
-                <Image
-                  src="/logo.svg"
-                  alt="Support Genius"
-                  width={64}
-                  height={64}
-                  className="h-full w-full object-cover"
-                  priority
-                />
-              </div>
-              <span className="text-[16px] font-medium tracking-tight text-ink">
-                Support <span className="text-primary">Genius</span>
+            <Link href="/" className="group flex shrink-0 items-center">
+              <span className="text-[20px] font-bold tracking-[-0.06em] text-ink transition-transform duration-150 group-hover:scale-[1.02]">
+                Support<span className="text-primary">Genius</span>
               </span>
             </Link>
 

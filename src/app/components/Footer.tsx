@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 
 export default function Footer() {
   const serviceLinks = [
@@ -103,18 +102,9 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <div className="mt-10 flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between text-[13px]">
-          <div className="flex items-center gap-2.5">
-            <div className="relative h-7 w-7 overflow-hidden rounded-[7px] border border-hairline">
-              <Image
-                src="/logo.svg"
-                alt="Support Genius"
-                width={56}
-                height={56}
-                className="h-full w-full object-cover"
-              />
-            </div>
-            <span className="text-[15px] font-medium tracking-tight text-ink">
-              Support <span className="text-primary">Genius</span>
+          <div className="flex items-center">
+            <span className="text-[18px] font-bold tracking-[-0.06em] text-ink">
+              Support<span className="text-primary">Genius</span>
             </span>
           </div>
 
