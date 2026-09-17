@@ -6,9 +6,12 @@
  * make the grid scannable at a glance, not to decorate.
  */
 
+import Link from "next/link";
+
 type Service = {
   name: string;
   body: string;
+  href: string;
   tint: string;
   icon: React.ReactNode;
 };
@@ -25,6 +28,7 @@ const services: Service[] = [
   {
     name: "24/7 app support",
     body: "Your merchants get a real answer at 2am their time - not whenever you next open the laptop.",
+    href: "/services/24-7-shopify-app-support",
     tint: "chip-orange",
     icon: (
       <svg viewBox="0 0 24 24" {...s}>
@@ -36,6 +40,7 @@ const services: Service[] = [
   {
     name: "Email support",
     body: "Every email answered in your tone, from your playbook. You stop babysitting the inbox.",
+    href: "/services/email-support",
     tint: "chip-blue",
     icon: (
       <svg viewBox="0 0 24 24" {...s}>
@@ -47,6 +52,7 @@ const services: Service[] = [
   {
     name: "Live chat",
     body: "A real person in the widget while the merchant is still in your app, guiding them through it.",
+    href: "/services/live-chat-support",
     tint: "chip-teal",
     icon: (
       <svg viewBox="0 0 24 24" {...s}>
@@ -57,6 +63,7 @@ const services: Service[] = [
   {
     name: "Social media support",
     body: "Frustrated tweets and “how does this work?” DMs get a fast, warm reply - in public, before they harden.",
+    href: "/services/social-media-support",
     tint: "chip-pink",
     icon: (
       <svg viewBox="0 0 24 24" {...s}>
@@ -68,6 +75,7 @@ const services: Service[] = [
   {
     name: "Bug reporting",
     body: "Bugs reach your engineer with repro steps, versions and logs attached. Clear signal, not noise.",
+    href: "/services/bug-reporting-and-triage",
     tint: "chip-violet",
     icon: (
       <svg viewBox="0 0 24 24" {...s}>
@@ -79,6 +87,7 @@ const services: Service[] = [
   {
     name: "Helpdesk management",
     body: "Tickets sorted, tagged and moving. The queue stays clean without you opening it.",
+    href: "/services/helpdesk-management",
     tint: "chip-amber",
     icon: (
       <svg viewBox="0 0 24 24" {...s}>
@@ -93,8 +102,9 @@ export default function ServiceGrid() {
   return (
     <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5">
       {services.map((sv) => (
-        <div
+        <Link
           key={sv.name}
+          href={sv.href}
           className="rounded-[14px] border border-hairline bg-canvas-raised p-6"
         >
           <span
@@ -108,7 +118,7 @@ export default function ServiceGrid() {
           <p className="mt-2 text-[14.5px] leading-relaxed text-ink-mute">
             {sv.body}
           </p>
-        </div>
+        </Link>
       ))}
     </div>
   );

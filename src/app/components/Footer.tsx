@@ -3,9 +3,9 @@ import Image from "next/image";
 
 export default function Footer() {
   const serviceLinks = [
-    { href: "/services/shopify-app-customer-support", label: "Merchant customer support" },
-    { href: "/services/support-onboarding-playbooks", label: "Onboarding & playbooks" },
-    { href: "/services/technical-support-triage", label: "Technical support triage" },
+    { href: "/services/24-7-shopify-app-support", label: "24/7 app support" },
+    { href: "/services/email-support", label: "Email support" },
+    { href: "/services/live-chat-support", label: "Live chat support" },
     { href: "/services#knowledge-base-management", label: "Knowledge base management" },
     { href: "/services#support-operations-reporting", label: "Support operations reporting" },
   ];

@@ -54,7 +54,71 @@ type ServiceData = {
   faqs?: { q: string; a: string }[];
 };
 
+const practicalServiceData: Record<string, ServiceData> = {
+  "24-7-shopify-app-support": {
+    titleTag: "24/7 Shopify App Support | Support Genius",
+    metaDesc: "24/7 Shopify app support that gives merchants timely, product-aware help across time zones.",
+    h1: "24/7 Shopify App Support That Keeps Merchants Moving",
+    heroSub: "Your merchants should not have to wait for your team to wake up. We provide agreed coverage, clear answers, and structured escalation when an issue needs your attention.",
+    badge: "Always-on coverage",
+    primaryCta: { label: "Talk about coverage", href: "/contact" },
+    secondaryCta: { label: "Explore all services", href: "/services" },
+    bulletSection: { h2: "What 24/7 coverage includes", items: ["Coverage windows agreed around your merchant base and operating hours.", "Product-aware responses that follow your approved playbooks and escalation rules.", "Clear handovers so unresolved work never disappears between time zones.", "A reliable path for urgent issues that need your product or engineering team."] },
+  },
+  "email-support": {
+    titleTag: "Shopify App Email Support | Support Genius",
+    metaDesc: "Product-aware email support for Shopify apps, with clear replies, clean triage, and an inbox your team does not have to manage alone.",
+    h1: "Email Support for Shopify Apps",
+    heroSub: "Give every merchant a clear, helpful reply without turning the shared inbox into another founder responsibility.",
+    badge: "Inbox coverage",
+    primaryCta: { label: "Improve your inbox", href: "/contact" },
+    secondaryCta: { label: "Explore all services", href: "/services" },
+    bulletSection: { h2: "How email support stays useful", items: ["Replies follow your product knowledge, brand voice, and approval boundaries.", "Tickets are categorized so repeat questions and unresolved issues are visible.", "Known issues receive consistent guidance while new issues are triaged with context.", "Your team receives clean escalations rather than copied email threads."] },
+  },
+  "live-chat-support": {
+    titleTag: "Shopify App Live Chat Support | Support Genius",
+    metaDesc: "Live chat support for Shopify apps that helps merchants solve setup and product questions while they are active in your app.",
+    h1: "Live Chat Support for Shopify Apps",
+    heroSub: "Help merchants while they are working, not after they have abandoned a setup or left with an unanswered question.",
+    badge: "Real-time help",
+    primaryCta: { label: "Talk about live chat", href: "/contact" },
+    secondaryCta: { label: "Explore all services", href: "/services" },
+    bulletSection: { h2: "A better live chat experience", items: ["Fast, human answers for approved product and setup questions.", "Guidance that keeps merchants moving through the next useful step.", "A clear handoff for technical issues that cannot be resolved in chat.", "Conversation patterns that reveal where onboarding or documentation needs improvement."] },
+  },
+  "social-media-support": {
+    titleTag: "Shopify App Social Media Support | Support Genius",
+    metaDesc: "Social media support for Shopify apps, with thoughtful responses to public questions and direct messages.",
+    h1: "Social Media Support That Protects the Merchant Experience",
+    heroSub: "Public questions and direct messages need a timely, useful reply. We help your team respond with context, care, and clear escalation boundaries.",
+    badge: "Public channels",
+    primaryCta: { label: "Talk about social support", href: "/contact" },
+    secondaryCta: { label: "Explore all services", href: "/services" },
+    bulletSection: { h2: "What social support covers", items: ["Approved responses to product questions, setup issues, and common requests.", "A respectful path from a public conversation into the right support channel.", "Fast triage for account-specific, sensitive, or technical concerns.", "A record of recurring public feedback for your support and product teams."] },
+  },
+  "bug-reporting-and-triage": {
+    titleTag: "Shopify App Bug Reporting and Triage | Support Genius",
+    metaDesc: "Shopify app bug reporting and technical triage with reproduction details, merchant context, and clear engineering handoffs.",
+    h1: "Bug Reporting and Triage for Shopify Apps",
+    heroSub: "Engineering should receive a structured issue, not a vague message that an app is broken. We gather the details needed to investigate while keeping the merchant informed.",
+    badge: "Engineering bridge",
+    primaryCta: { label: "Improve bug triage", href: "/contact" },
+    secondaryCta: { label: "Explore all services", href: "/services" },
+    bulletSection: { h2: "What a useful bug report contains", items: ["Merchant goal, expected outcome, actual outcome, and reproduction steps.", "Relevant store, app, theme, browser, timestamp, and error context within approved access rules.", "Troubleshooting already attempted and the result of each step.", "A clear severity note and customer-facing update path."] },
+  },
+  "helpdesk-management": {
+    titleTag: "Shopify App Helpdesk Management | Support Genius",
+    metaDesc: "Helpdesk management for Shopify apps: ticket routing, tagging, prioritization, reporting, and a support queue your team can rely on.",
+    h1: "Helpdesk Management for a Cleaner Support Operation",
+    heroSub: "A support queue should make work clearer, not hide it. We help keep tickets routed, tagged, prioritized, and connected to the people who need to act.",
+    badge: "Queue operations",
+    primaryCta: { label: "Talk about your helpdesk", href: "/contact" },
+    secondaryCta: { label: "Explore all services", href: "/services" },
+    bulletSection: { h2: "A well-run helpdesk gives you", items: ["Clear ownership and next steps for every customer conversation.", "Consistent ticket tagging that makes themes and bottlenecks visible.", "Priority and escalation rules your team can trust.", "Actionable reporting on volume, categories, response quality, and recurring friction."] },
+  },
+};
+
 const serviceDataMap: Record<string, ServiceData> = {
+  ...practicalServiceData,
   "shopify-app-customer-support": {
     titleTag: "Shopify App Customer Support Outsourcing | Support Genius",
     metaDesc:
@@ -260,6 +324,9 @@ export async function generateMetadata({
   return {
     title: data.titleTag,
     description: data.metaDesc,
+    alternates: {
+      canonical: `/services/${resolvedSlug}`,
+    },
   };
 }
 
