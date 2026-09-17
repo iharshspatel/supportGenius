@@ -5,15 +5,13 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import "./globals.css";
 
-/* UI + body. Variable so we can use real 520/560 weights, not just 400/500. */
+/* UI + body. Variable so we can use real 520/560 weights, not just for the demo . */
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
   display: "swap",
-});
+}); 
 
-/* Display face. Heavy geometric sans - the headlines are meant to land as
-   weight and shape, not as decoration. */
 const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
   weight: ["700", "800"],
