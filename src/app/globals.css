@@ -335,7 +335,11 @@ h3 {
   border: 1px solid transparent;
   cursor: pointer;
   text-decoration: none;
-  white-space: nowrap;
+  min-height: 44px;
+  max-width: 100%;
+  text-align: center;
+  white-space: normal;
+  overflow-wrap: anywhere;
   user-select: none;
   transition: background-color var(--dur-2) var(--ease-out-quint),
     border-color var(--dur-2) var(--ease-out-quint),
@@ -399,6 +403,14 @@ h3 {
 .btn-secondary:active,
 .btn-ghost:active {
   transform: scale(0.98);
+}
+
+.btn-primary:disabled,
+.btn-secondary:disabled,
+.btn-ghost:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+  transform: none;
 }
 
 /* The arrow nudges on hover - the one flourish worth keeping on a button */
@@ -709,8 +721,7 @@ h3 {
   border: 1px solid var(--color-hairline-strong);
   border-radius: var(--radius-sm);
   padding: 0.75rem 1rem;
-  transition: border-color var(--dur-2) var(--ease-out-quint),
-    box-shadow var(--dur-2) var(--ease-out-quint);
+  transition: border-color var(--dur-2) var(--ease-out-quint);
   outline: none;
   box-sizing: border-box;
 }
@@ -722,15 +733,9 @@ h3 {
   }
 }
 
-.input-dark:hover,
-.select-dark:hover {
-  border-color: var(--color-ink-faint);
-}
-
 .input-dark:focus,
 .select-dark:focus {
   border-color: var(--color-primary);
-  box-shadow: 0 0 0 4px rgba(255, 90, 31, 0.13);
 }
 
 .input-dark::placeholder {

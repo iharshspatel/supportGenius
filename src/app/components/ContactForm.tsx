@@ -1,11 +1,13 @@
 "use client";
 
 import { useState, type FormEvent, type ReactNode } from "react";
+import { useRouter } from "next/navigation";
 
 const formspreeEndpoint = "https://formspree.io/f/moevqkqr";
 type ContactFormProps = { children: ReactNode; className?: string };
 
 export default function ContactForm({ children, className }: ContactFormProps) {
+  const router = useRouter();
   const [status, setStatus] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
@@ -15,7 +17,8 @@ export default function ContactForm({ children, className }: ContactFormProps) {
     try {
       const response = await fetch(formspreeEndpoint, { method: "POST", headers: { Accept: "application/json" }, body: formData });
       if (!response.ok) { setStatus("We could not send your inquiry. Please try again or email dhruv.mangla@thesupportgenius.com."); return; }
-      form.reset(); setStatus("Thanks - your inquiry has been sent. We will reply soon.");
+      form.reset();
+      router.push("/thank-you");
     } catch { setStatus("We could not send your inquiry. Please try again or email dhruv.mangla@thesupportgenius.com."); }
     finally { setIsSubmitting(false); }
   }

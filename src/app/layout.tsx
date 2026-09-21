@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Script from "next/script";
-import { ViewTransition } from "react";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -39,14 +38,12 @@ export const metadata: Metadata = {
     title: "Shopify App Support That Lets Your Team Keep Building",
     description:
       "Shopify-aware support for founder-led app teams, from merchant conversations to engineering-ready escalations.",
-    images: [{ url: "/logo-full.png", alt: "Support Genius" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Shopify App Support That Lets Your Team Keep Building",
     description:
       "Shopify-aware support for founder-led app teams, from merchant conversations to engineering-ready escalations.",
-    images: ["/logo-full.png"],
   },
   robots: {
     index: true,
@@ -110,11 +107,9 @@ gtag('config', 'G-F1Y1E11D3R');`}
           Skip to content
         </a>
         <Header />
-        <ViewTransition>
-          <div id="main" className="flex-1 w-full">
-            {children}
-          </div>
-        </ViewTransition>
+        <div id="main" className="flex-1 w-full">
+          {children}
+        </div>
         <Footer />
       </body>
     </html>

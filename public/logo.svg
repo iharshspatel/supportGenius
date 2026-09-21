@@ -1,16 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
-  <defs>
-    <linearGradient id="background" x1="8" y1="6" x2="57" y2="60" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#2B2926" />
-      <stop offset="1" stop-color="#111110" />
-    </linearGradient>
-    <linearGradient id="accent" x1="21" y1="18" x2="46" y2="49" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#FFC978" />
-      <stop offset="1" stop-color="#D96A34" />
-    </linearGradient>
-  </defs>
-  <rect width="64" height="64" rx="16" fill="url(#background)" />
-  <rect x="1" y="1" width="62" height="62" rx="15" stroke="#FFFFFF" stroke-opacity=".13" stroke-width="2" />
-  <path d="M45 20.5C41.6 16.8 36.9 15 31.2 15C23.5 15 18.2 19.5 18.2 26.1C18.2 32.8 24.1 35.1 31.7 37.5C39.3 39.9 45 42.5 45 49.1C45 55.6 39.6 59 32 59C26.3 59 21.7 56.9 18.7 53.2" stroke="#F8F6F2" stroke-width="5.25" stroke-linecap="round" stroke-linejoin="round" />
-  <path d="M48 10.5L49.4 14.6L53.5 16L49.4 17.4L48 21.5L46.6 17.4L42.5 16L46.6 14.6L48 10.5Z" fill="#FFC978" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="14" fill="#0E1533"/>
+  <rect x="1" y="1" width="62" height="62" rx="13" fill="none" stroke="#FFFFFF" stroke-opacity=".14" stroke-width="2"/>
+  <text x="7" y="43" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="31" font-weight="800" letter-spacing="-5">S</text>
+  <text x="30" y="43" fill="#FF5A1F" font-family="Arial, Helvetica, sans-serif" font-size="31" font-weight="800" letter-spacing="-5">G</text>
 </svg>
