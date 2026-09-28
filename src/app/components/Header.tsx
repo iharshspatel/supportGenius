@@ -85,8 +85,8 @@ export default function Header() {
         <div className="mx-auto flex h-16 max-w-[1280px] items-center justify-between px-4 sm:px-6">
           {/* Brand Logo & Wordmark */}
           <div className="flex h-full items-center gap-8">
-            <Link href="/" className="group flex shrink-0 items-center">
-              <span className="text-[20px] font-bold tracking-[-0.06em] text-ink transition-transform duration-150 group-hover:scale-[1.02]">
+            <Link href="/" className="flex shrink-0 items-center">
+              <span className="text-[20px] font-bold tracking-[-0.06em] text-ink">
                 Support<span className="text-primary">Genius</span>
               </span>
             </Link>
