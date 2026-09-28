@@ -181,8 +181,8 @@ h3 {
 }
 
 .display-xxl {
-  font-size: clamp(2.6rem, 1.5rem + 4.1vw, 4.25rem);
-  line-height: 1.03;
+  font-size: clamp(2.4rem, 1.65rem + 3.1vw, 3.75rem);
+  line-height: 1.06;
   letter-spacing: -0.036em;
 }
 
@@ -380,6 +380,26 @@ h3 {
   background-color: #f0f2f8;
 }
 
+/* Primary actions stay visibly raised whenever they sit on the site’s navy
+   surfaces. This keeps every dark-section CTA in the same button system. */
+.btn-dark-surface,
+.section-night .btn-primary,
+.card-feature-dark .btn-primary,
+.card-pricing-featured .btn-primary,
+.card-dark .btn-primary {
+  border-color: var(--color-hairline-night);
+  background-color: var(--color-canvas-night-raised);
+}
+
+.btn-dark-surface:hover,
+.section-night .btn-primary:hover,
+.card-feature-dark .btn-primary:hover,
+.card-pricing-featured .btn-primary:hover,
+.card-dark .btn-primary:hover {
+  border-color: #3d4878;
+  background-color: var(--color-canvas-night-soft);
+}
+
 .btn-accent {
   background-color: var(--color-primary);
   color: #ffffff;
@@ -426,6 +446,55 @@ h3 {
   transform: translateX(3px);
 }
 
+/* Text-only 3D flip: the button surface stays still while its label turns. */
+.btn-flip {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-flip-track {
+  position: relative;
+  display: inline-flex;
+  overflow: hidden;
+  line-height: 1.25;
+  perspective: 600px;
+}
+
+.btn-flip-primary,
+.btn-flip-secondary {
+  display: inline-block;
+  backface-visibility: hidden;
+  transition: transform 0.35s cubic-bezier(0.76, 0, 0.24, 1), opacity 0.35s ease;
+}
+
+.btn-flip-primary {
+  transform-origin: bottom center;
+}
+
+.btn-flip-secondary {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  transform: translateY(100%) rotateX(-90deg);
+  transform-origin: top center;
+  opacity: 0;
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .btn-primary:hover .btn-flip-primary,
+  .btn-secondary:hover .btn-flip-primary {
+    transform: translateY(-100%) rotateX(90deg);
+    opacity: 0;
+  }
+
+  .btn-primary:hover .btn-flip-secondary,
+  .btn-secondary:hover .btn-flip-secondary {
+    transform: translateY(0) rotateX(0deg);
+    opacity: 1;
+  }
+}
+
 /* ==========================================================================
    Cards & surfaces
    ========================================================================== */
@@ -444,6 +513,7 @@ h3 {
   transition: border-color var(--dur-2) var(--ease-out-quint),
     box-shadow var(--dur-3) var(--ease-out-quint),
     transform var(--dur-3) var(--ease-out-quint);
+  overflow: hidden;
 }
 
 .card-base:hover,
@@ -468,7 +538,9 @@ h3 {
   border-radius: var(--radius-lg);
   position: relative;
   transition: border-color var(--dur-2) var(--ease-out-quint),
-    box-shadow var(--dur-3) var(--ease-out-quint);
+    box-shadow var(--dur-3) var(--ease-out-quint),
+    transform var(--dur-3) var(--ease-out-quint);
+  overflow: hidden;
 }
 
 .card-pricing-featured {
@@ -479,6 +551,987 @@ h3 {
 .card-feature-dark:hover,
 .card-pricing-featured:hover {
   border-color: #3d4878;
+}
+
+/* One restrained interaction system for every reusable card. The card rises
+   slightly, while its existing orange hairline becomes visible on hover. */
+.card-base > .spotlight-glow,
+.card-feature > .spotlight-glow,
+.card-feature-light > .spotlight-glow,
+.card-feature-light-hover > .spotlight-glow,
+.card-dark > .spotlight-glow,
+.card-pricing > .spotlight-glow,
+.card-feature-dark > .spotlight-glow,
+.card-pricing-featured > .spotlight-glow {
+  opacity: 0.45;
+  transform: scaleX(0.58);
+  transform-origin: center;
+  transition: opacity var(--dur-3) var(--ease-out-quint),
+    transform var(--dur-3) var(--ease-out-quint);
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .card-base:hover,
+  .card-feature:hover,
+  .card-feature-light:hover,
+  .card-feature-light-hover:hover,
+  .card-dark:hover,
+  .card-pricing:hover,
+  .card-feature-dark:hover,
+  .card-pricing-featured:hover {
+    transform: translateY(-4px);
+  }
+
+  .card-feature-dark:hover,
+  .card-pricing-featured:hover {
+    box-shadow: var(--shadow-float);
+  }
+
+  .card-base:hover > .spotlight-glow,
+  .card-feature:hover > .spotlight-glow,
+  .card-feature-light:hover > .spotlight-glow,
+  .card-feature-light-hover:hover > .spotlight-glow,
+  .card-dark:hover > .spotlight-glow,
+  .card-pricing:hover > .spotlight-glow,
+  .card-feature-dark:hover > .spotlight-glow,
+  .card-pricing-featured:hover > .spotlight-glow {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+
+/* Blog article CTA: keep the existing navy palette while giving the final
+   conversion block its own calm visual focus. */
+.blog-article-cta {
+  background-image:
+    radial-gradient(circle at 86% 18%, rgba(124, 77, 255, 0.16), transparent 34%),
+    radial-gradient(circle at 8% 100%, rgba(255, 90, 31, 0.12), transparent 38%);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Blog hub and article titles share one scale so the reading experience is
+   consistent across every blog route. */
+.blog-page-heading {
+  font-family: var(--font-display);
+  font-size: clamp(2.55rem, 1.75rem + 2.8vw, 3.8rem);
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -0.042em;
+  text-wrap: balance;
+}
+
+/* Blog articles use a wider title measure and a visual rule that separates
+   section titles from the reading flow without adding new copy. */
+.blog-article-title {
+  max-width: 22ch;
+  font-size: clamp(2.55rem, 1.75rem + 2.8vw, 3.8rem);
+  line-height: 1.08;
+  letter-spacing: -0.042em;
+  text-wrap: balance;
+}
+
+.blog-article-meta {
+  position: relative;
+  padding-bottom: 1.25rem;
+}
+
+.blog-article-meta::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 3.25rem;
+  height: 2px;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-primary-edge));
+}
+
+/* Animated service workflow used only in the main Services hero. */
+.services-hero-demo {
+  overflow: hidden;
+  width: 100%;
+  max-width: 32rem;
+  justify-self: end;
+  border: 1px solid var(--color-hairline-night);
+  border-radius: var(--radius-xl);
+  color: #ffffff;
+  background: var(--color-canvas-night);
+  box-shadow: var(--shadow-float);
+}
+
+.services-hero-demo-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+  font-size: 0.8125rem;
+  font-weight: 650;
+}
+
+.services-hero-demo-id {
+  color: rgba(255, 255, 255, 0.3);
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+}
+
+.services-hero-demo-stage {
+  position: relative;
+  min-height: 16.5rem;
+  padding: 1.5rem 1.25rem;
+}
+
+.services-hero-demo-frame {
+  position: absolute;
+  inset: 1.5rem 1.25rem;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(10px);
+  transition: opacity var(--dur-3) var(--ease-out-quint),
+    transform var(--dur-3) var(--ease-out-quint);
+}
+
+.services-hero-demo-frame.is-active {
+  opacity: 1;
+  transform: none;
+}
+
+.services-hero-demo-frame h2 {
+  max-width: 25rem;
+  color: #ffffff;
+  font-size: clamp(1rem, 0.9rem + 0.35vw, 1.2rem);
+  font-weight: 650;
+  line-height: 1.35;
+  letter-spacing: -0.02em;
+}
+
+.services-hero-demo-person,
+.services-hero-demo-complete {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.services-hero-demo-person {
+  margin-top: 1.2rem;
+}
+
+.services-hero-demo-person > span {
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 9999px;
+  background-color: rgba(255, 255, 255, 0.1);
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+}
+
+.services-hero-demo-person p,
+.services-hero-demo-frame > p {
+  color: rgba(255, 255, 255, 0.48);
+  font-size: 0.75rem;
+  line-height: 1.45;
+}
+
+.services-hero-demo-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1.1rem;
+}
+
+.services-hero-demo-tags span {
+  padding: 0.38rem 0.65rem;
+  border-radius: 9999px;
+  color: rgba(255, 255, 255, 0.45);
+  background-color: rgba(255, 255, 255, 0.06);
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.services-hero-demo-tags .services-hero-demo-tag-priority { color: #f3ba63; background-color: rgba(232, 147, 12, 0.13); }
+.services-hero-demo-tags .services-hero-demo-tag-alert { color: #f39999; background-color: rgba(225, 29, 72, 0.13); }
+
+.services-hero-demo-message,
+.services-hero-demo-row {
+  margin-top: 1rem;
+  padding: 0.85rem 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-md);
+  color: rgba(255, 255, 255, 0.88) !important;
+  background-color: rgba(255, 255, 255, 0.045);
+  font-size: 0.8125rem !important;
+  line-height: 1.45 !important;
+}
+
+.services-hero-demo-message-muted { margin-top: 0.75rem; border: 0; background-color: rgba(255, 255, 255, 0.08); color: rgba(255, 255, 255, 0.56) !important; }
+.services-hero-demo-row { padding-block: 0.7rem; border: 0; border-radius: var(--radius-sm); color: rgba(255, 255, 255, 0.72) !important; }
+
+.services-hero-demo-complete {
+  margin-top: 1rem;
+  padding: 0.75rem 0.9rem;
+  border: 1px solid rgba(22, 163, 74, 0.28);
+  border-radius: var(--radius-md);
+  color: rgba(255, 255, 255, 0.88);
+  background-color: rgba(22, 163, 74, 0.1);
+  font-size: 0.8125rem;
+}
+
+.services-hero-demo-rail {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  border-top: 1px solid rgba(255, 255, 255, 0.09);
+}
+
+.services-hero-demo-rail-step {
+  position: relative;
+  min-width: 0;
+  padding: 0.8rem 0.75rem 0.9rem;
+  border: 0;
+  color: rgba(255, 255, 255, 0.3);
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+  transition: color var(--dur-2) var(--ease-out-quint);
+}
+
+.services-hero-demo-rail-step::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  right: 0;
+  left: 0;
+  height: 2px;
+  transform: scaleX(0);
+  transform-origin: left;
+  background: var(--color-primary);
+}
+
+.services-hero-demo-rail-step.is-active {
+  color: #ffffff;
+}
+
+.services-hero-demo-rail-step.is-active::before {
+  animation: services-hero-demo-progress 4s linear both;
+}
+
+.services-hero-demo.is-paused .services-hero-demo-rail-step.is-active::before {
+  transform: scaleX(1);
+  animation: none;
+}
+
+@keyframes services-hero-demo-progress {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+.services-hero-demo-rail-step:focus-visible {
+  outline: 2px solid var(--color-primary-soft);
+  outline-offset: -3px;
+}
+
+.services-hero-demo-rail-step span,
+.services-hero-demo-rail-step strong {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.services-hero-demo-rail-step span { font-family: var(--font-mono); font-size: 0.625rem; }
+.services-hero-demo-rail-step strong { margin-top: 0.25rem; font-size: 0.6875rem; font-weight: 600; }
+
+/* Service-only hero visual: a support-system loop, deliberately different
+   from the shared-inbox workflow used on the landing page. */
+.services-coverage-map {
+  width: 100%;
+  max-width: 35rem;
+  justify-self: end;
+  overflow: hidden;
+  border: 1px solid var(--color-hairline-night);
+  border-radius: var(--radius-xl);
+  color: #ffffff;
+  background: var(--color-canvas-night);
+  box-shadow: var(--shadow-float);
+}
+
+.services-coverage-map-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+  font-size: 0.8125rem;
+  font-weight: 650;
+}
+
+.services-coverage-map-status {
+  margin-left: auto;
+  color: rgba(255, 255, 255, 0.38);
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.services-coverage-map-body {
+  display: grid;
+  grid-template-columns: minmax(10rem, 0.8fr) minmax(0, 1.2fr);
+  gap: clamp(1.2rem, 3vw, 2.5rem);
+  align-items: center;
+  min-height: 17.5rem;
+  padding: 1.35rem 1.25rem;
+}
+
+.services-coverage-map-orbit {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: min(100%, 12.5rem);
+  aspect-ratio: 1;
+  margin-inline: auto;
+}
+
+.services-coverage-map-orbit-ring {
+  position: absolute;
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  border-radius: 9999px;
+}
+
+.services-coverage-map-orbit-ring-one { inset: 0; }
+
+.services-coverage-map-orbit-ring-two {
+  inset: 1.25rem;
+  border-color: rgba(255, 90, 31, 0.26);
+}
+
+.services-coverage-map-orbit-core {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 5.8rem;
+  height: 5.8rem;
+  border: 1px solid rgba(255, 90, 31, 0.7);
+  border-radius: 9999px;
+  background: var(--color-canvas-night-soft);
+  box-shadow: 0 0 0 0.7rem rgba(255, 90, 31, 0.06);
+  line-height: 1.05;
+}
+
+.services-coverage-map-orbit-core span {
+  margin-bottom: -0.8rem;
+  color: rgba(255, 255, 255, 0.53);
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.services-coverage-map-orbit-core strong {
+  color: #ffffff;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+.services-coverage-map-orbit-marker {
+  position: absolute;
+  z-index: 2;
+  top: -0.22rem;
+  left: calc(50% - 0.34rem);
+  width: 0.68rem;
+  height: 0.68rem;
+  border: 2px solid var(--color-canvas-night);
+  border-radius: 9999px;
+  background: var(--color-primary);
+  box-shadow: 0 0 0 0.28rem rgba(255, 90, 31, 0.12);
+  transition: top 900ms var(--ease-out-quint), left 900ms var(--ease-out-quint);
+}
+
+.services-coverage-map-orbit-marker.is-layer-0 {
+  top: -0.22rem;
+  left: calc(50% - 0.34rem);
+}
+
+.services-coverage-map-orbit-marker.is-layer-1 {
+  top: calc(50% + 21%);
+  left: calc(100% - 0.75rem);
+}
+
+.services-coverage-map-orbit-marker.is-layer-2 {
+  top: calc(50% + 21%);
+  left: 0.1rem;
+}
+
+.services-coverage-map-orbit-label {
+  position: absolute;
+  z-index: 1;
+  color: rgba(255, 255, 255, 0.5);
+  font-family: var(--font-mono);
+  font-size: 0.57rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.services-coverage-map-orbit-label-one { top: -1.15rem; left: 50%; transform: translateX(-50%); }
+.services-coverage-map-orbit-label-two { right: -1.65rem; bottom: 1.6rem; }
+.services-coverage-map-orbit-label-three { bottom: -1.15rem; left: 50%; transform: translateX(-50%); }
+
+.services-coverage-map-layers > p {
+  margin-bottom: 0.7rem;
+  color: rgba(255, 255, 255, 0.4);
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.services-coverage-map-layer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 0.75rem;
+  min-height: 3.55rem;
+  margin-top: 0.55rem;
+  padding: 0.7rem 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-sm);
+  color: rgba(255, 255, 255, 0.58);
+  background: rgba(255, 255, 255, 0.035);
+  cursor: pointer;
+  text-align: left;
+  transition: border-color var(--dur-3) var(--ease-out-quint),
+    background-color var(--dur-3) var(--ease-out-quint),
+    color var(--dur-3) var(--ease-out-quint),
+    transform var(--dur-3) var(--ease-out-quint);
+}
+
+.services-coverage-map-layer:hover,
+.services-coverage-map-layer.is-active {
+  border-color: rgba(255, 90, 31, 0.55);
+  background: rgba(255, 90, 31, 0.12);
+  transform: translateX(0.2rem);
+}
+
+.services-coverage-map-layer-number {
+  color: var(--color-primary-soft);
+  font-family: var(--font-mono);
+  font-size: 0.63rem;
+  letter-spacing: 0.06em;
+}
+
+.services-coverage-map-layer strong,
+.services-coverage-map-layer small {
+  display: block;
+}
+
+.services-coverage-map-layer strong {
+  color: #ffffff;
+  font-size: 0.81rem;
+  font-weight: 650;
+  line-height: 1.2;
+}
+
+.services-coverage-map-layer small {
+  margin-top: 0.18rem;
+  color: rgba(255, 255, 255, 0.48);
+  font-size: 0.67rem;
+  line-height: 1.35;
+}
+
+.services-coverage-map-footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  padding: 0.95rem 1.25rem 1.05rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.09);
+}
+
+.services-coverage-map-footer span {
+  padding: 0.35rem 0.55rem;
+  border-radius: 9999px;
+  color: rgba(255, 255, 255, 0.54);
+  background: rgba(255, 255, 255, 0.06);
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.04em;
+}
+
+@media (max-width: 640px) {
+  .services-coverage-map {
+    max-width: none;
+    justify-self: stretch;
+  }
+
+  .services-coverage-map-body {
+    grid-template-columns: minmax(8.5rem, 0.8fr) minmax(0, 1.2fr);
+    gap: 0.9rem;
+    padding-inline: 0.9rem;
+  }
+
+  .services-coverage-map-layer {
+    padding-inline: 0.5rem;
+  }
+
+  .services-coverage-map-orbit-label-two {
+    right: -0.7rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .services-coverage-map-status {
+    display: none;
+  }
+
+  .services-coverage-map-body {
+    grid-template-columns: 1fr;
+    padding: 1.65rem 1rem 1.1rem;
+  }
+
+  .services-coverage-map-orbit {
+    width: 10.5rem;
+  }
+
+  .services-coverage-map-layers {
+    width: 100%;
+    margin-top: 0.9rem;
+  }
+}
+
+/* Services hub: one centered system for the hero, selection grid, data, and
+   FAQs. This keeps the page confident at wide sizes without stretching copy. */
+.services-hub-container,
+.service-detail-container {
+  width: 100%;
+  max-width: none;
+}
+
+.services-hub-hero {
+  border-bottom: 1px solid var(--color-hairline-cool);
+}
+
+.services-hub-hero-copy {
+  max-width: 45rem;
+}
+
+.services-hub-section-intro {
+  width: min(100%, 48rem);
+  margin-inline: auto;
+  text-align: center;
+}
+
+.services-hub-section-intro h2::after {
+  content: "";
+  display: block;
+  width: 3.5rem;
+  height: 3px;
+  margin: 1rem auto 0;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-primary-edge));
+}
+
+.services-hub-section-intro p {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.services-hub-card-grid {
+  align-items: stretch;
+}
+
+.services-hub-card {
+  min-height: 17rem;
+  border-color: var(--color-hairline);
+}
+
+.services-hub-data-card {
+  box-shadow: 0 18px 42px -34px rgba(14, 21, 51, 0.3);
+}
+
+.services-hub-plan {
+  padding-block: clamp(4rem, 7vw, 7rem);
+}
+
+.services-hub-plan .services-hub-section-intro {
+  width: 100%;
+  max-width: none;
+  padding: clamp(2rem, 4vw, 3.5rem);
+  border: 1px solid var(--color-hairline);
+  border-radius: var(--radius-xl);
+  background: linear-gradient(135deg, var(--color-canvas-soft), var(--color-canvas));
+  box-shadow: 0 18px 44px -40px rgba(14, 21, 51, 0.28);
+}
+
+.services-hub-plan .services-hub-section-intro p {
+  max-width: 74ch;
+  font-size: clamp(1.0625rem, 1rem + 0.2vw, 1.1875rem);
+  line-height: 1.65;
+}
+
+.services-hub-faq-intro {
+  text-align: center;
+}
+
+.services-hub-faq-intro p {
+  max-width: 28rem;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+/* Individual service pages use the same centered, editorial system. */
+
+.service-detail-hero > div {
+  max-width: 70rem;
+}
+
+.service-detail-title {
+  max-width: 25ch;
+  font-size: clamp(2.4rem, 1.65rem + 2.8vw, 3.75rem);
+  line-height: 1.06;
+  text-wrap: balance;
+}
+
+/* A section lead is stacked, not a question-and-answer split. The short
+   accent rule gives each story block a clear beginning without adding copy. */
+.service-detail-section-intro {
+  position: relative;
+  width: min(100%, 72rem);
+  max-width: 72rem;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.service-detail-section-intro h2::after {
+  content: "";
+  display: block;
+  width: 3.5rem;
+  height: 3px;
+  margin: 1rem auto 0;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-primary-edge));
+}
+
+.service-detail-section-intro h2 {
+  max-width: 23ch;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.service-detail-section-intro > p {
+  max-width: 62ch;
+  margin-right: auto;
+  margin-left: auto;
+  font-size: clamp(1rem, 0.95rem + 0.18vw, 1.125rem);
+}
+
+/* The opening service narrative is intentionally centered as a single
+   statement, while the longer page sections remain comfortably readable. */
+.service-detail-context {
+  width: min(100%, 80rem);
+  max-width: 80rem;
+  padding: clamp(2rem, 4vw, 4rem);
+  border: 1px solid var(--color-hairline);
+  border-radius: var(--radius-xl);
+  background: linear-gradient(135deg, var(--color-canvas-soft), var(--color-canvas));
+  box-shadow: 0 18px 44px -40px rgba(14, 21, 51, 0.28);
+  text-align: center;
+}
+
+.service-detail-context h2,
+.service-detail-context > p {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.service-detail-context h2 {
+  max-width: 30ch;
+}
+
+.service-detail-context > p {
+  max-width: 70ch;
+}
+
+.service-detail-context h2::after {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.service-detail-data-card {
+  box-shadow: 0 14px 36px -28px rgba(14, 21, 51, 0.28);
+}
+
+.service-detail-card-grid > * {
+  min-height: 100%;
+}
+
+.service-detail-card-grid .status-dot-green {
+  margin-top: 0.45rem;
+}
+
+.service-detail-proof {
+  width: min(100%, 68rem);
+  max-width: none;
+  margin-inline: auto;
+}
+
+/* Location pages use the same centered reading width as the service pages.
+   The regional overview stays a two-column layout only when both columns fit. */
+.location-detail-container {
+  width: min(100%, 80rem);
+  max-width: 80rem;
+}
+
+.location-detail-system {
+  width: min(100%, 70rem);
+  max-width: 70rem;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.location-detail-system h2,
+.location-detail-system p {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.location-detail-system h2 {
+  max-width: 25ch;
+}
+
+.location-detail-system p {
+  max-width: 66ch;
+}
+
+@media (min-width: 768px) {
+  .services-hub-container,
+  .service-detail-container {
+    width: 80%;
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+  .service-detail-container {
+    width: 84%;
+  }
+
+  .location-detail-container {
+    width: min(84%, 80rem);
+    max-width: 80rem;
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+
+@media (max-width: 1023px) {
+  .location-detail-relevance {
+    gap: 2.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .location-detail-relevance {
+    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+  }
+
+  .location-detail-coverage {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 22rem;
+  }
+}
+
+/* The location coverage card is a compact operating snapshot, not a plain
+   list. Its internal rows give the regional promises a clear visual rhythm. */
+.location-detail-coverage {
+  padding: clamp(1.5rem, 2.4vw, 2rem);
+}
+
+.location-detail-coverage-list > li {
+  min-height: 3.7rem;
+  padding: 0.8rem 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  border-left: 4px solid transparent;
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.055);
+  color: rgba(255, 255, 255, 0.88);
+  font-size: clamp(0.75rem, 0.68rem + 0.24vw, 0.875rem);
+  line-height: 1.45;
+  transition: border-color var(--dur-2) var(--ease-out-quint),
+    border-left-width var(--dur-2) var(--ease-out-quint),
+    background-color var(--dur-2) var(--ease-out-quint);
+}
+
+.location-detail-coverage-list > li > span:first-child {
+  flex: none;
+  color: var(--color-primary);
+  font-size: 1rem;
+}
+
+.location-detail-coverage-list > li:hover {
+  border-color: rgba(255, 90, 31, 0.48);
+  border-left: 4px solid var(--color-primary);
+  background: rgba(255, 90, 31, 0.14);
+}
+
+@media (max-width: 640px) {
+  .location-detail-coverage {
+    padding: 1.25rem;
+  }
+
+  .location-detail-coverage-header {
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .location-detail-coverage-list > li {
+    min-height: 0;
+    padding: 0.8rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .services-hub-faq-intro {
+    text-align: left;
+  }
+
+  .services-hub-faq-intro p {
+    margin-left: 0;
+  }
+}
+
+.blog-article-section-title {
+  position: relative;
+  padding-bottom: 0.85rem;
+  text-wrap: balance;
+}
+
+.blog-article-section-title::after {
+  content: "";
+  display: block;
+  width: 3.25rem;
+  height: 3px;
+  margin-top: 0.75rem;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-primary-edge));
+}
+
+@media (max-width: 640px) {
+  .blog-article-title {
+    max-width: 100%;
+    letter-spacing: -0.035em;
+  }
+
+  .blog-page-heading {
+    letter-spacing: -0.035em;
+  }
+
+}
+
+/* About: the Shopify ecosystem panel responds through its individual rows,
+   rather than moving the whole card. */
+.ecosystem-card {
+  overflow: hidden;
+}
+
+.ecosystem-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    circle at 78% 100%,
+    rgba(255, 90, 31, 0.15),
+    transparent 44%
+  );
+  opacity: 0;
+  transition: opacity var(--dur-4) var(--ease-out-quint);
+}
+
+.ecosystem-card > :not(.spotlight-glow) {
+  position: relative;
+  z-index: 1;
+}
+
+.ecosystem-card > .spotlight-glow {
+  z-index: 2;
+}
+
+.ecosystem-card-list {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.ecosystem-card-item {
+  position: relative;
+  min-height: 2.75rem;
+  padding: 0.625rem 0.75rem;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  transition: background-color var(--dur-2) var(--ease-out-quint),
+    border-color var(--dur-2) var(--ease-out-quint),
+    color var(--dur-2) var(--ease-out-quint),
+    box-shadow var(--dur-3) var(--ease-out-quint);
+}
+
+.ecosystem-card-item::after {
+  content: "";
+  position: absolute;
+  right: 0.75rem;
+  bottom: 0.35rem;
+  left: 0.75rem;
+  height: 1px;
+  background: linear-gradient(90deg, var(--color-primary), transparent);
+  opacity: 0;
+  transform: scaleX(0.25);
+  transform-origin: left;
+  transition: opacity var(--dur-2) var(--ease-out-quint),
+    transform var(--dur-3) var(--ease-out-quint);
+}
+
+@media (hover: hover) {
+  .ecosystem-card:hover::before {
+    opacity: 1;
+  }
+
+  .ecosystem-card:hover .ecosystem-card-item {
+    color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.045);
+    border-color: rgba(255, 255, 255, 0.08);
+  }
+
+  .ecosystem-card:hover .ecosystem-card-item::after {
+    opacity: 0.8;
+    transform: scaleX(1);
+  }
+
+  .ecosystem-card:hover .ecosystem-card-item:nth-child(2),
+  .ecosystem-card:hover .ecosystem-card-item:nth-child(2)::after {
+    transition-delay: 45ms;
+  }
+
+  .ecosystem-card:hover .ecosystem-card-item:nth-child(3),
+  .ecosystem-card:hover .ecosystem-card-item:nth-child(3)::after {
+    transition-delay: 90ms;
+  }
+
+  .ecosystem-card:hover .ecosystem-card-item:nth-child(4),
+  .ecosystem-card:hover .ecosystem-card-item:nth-child(4)::after {
+    transition-delay: 135ms;
+  }
+
+  .ecosystem-card-item:hover {
+    background-color: rgba(255, 90, 31, 0.11) !important;
+    border-color: rgba(255, 90, 31, 0.34) !important;
+    box-shadow: inset 3px 0 0 var(--color-primary);
+  }
 }
 
 /* Icon chip - a tinted rounded square. Colour is the category. */
@@ -820,6 +1873,7 @@ h3 {
       it is above the fold at load. */
 .word-rise {
   display: inline-block;
+  max-width: 100%;
   overflow: hidden;
   padding-bottom: 0.08em;
   vertical-align: bottom;
@@ -891,30 +1945,87 @@ h3 {
   30% { transform: translateY(-3px); opacity: 1; }
 }
 
-/* 6. Scroll-linked rail for the handover timeline: the line fills as you
-      read, and empties if you scroll back. */
-@keyframes rail-draw {
-  from { transform: scaleY(0); }
-  to { transform: scaleY(1); }
+/* 6. Handover timeline. The rail reads the section's actual scroll position,
+   and each stage signal pulses once when it first enters the viewport. */
+.handover-timeline {
+  --handover-rail-fill: 0%;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  @supports (animation-timeline: view()) {
-    .rail-fill {
-      transform-origin: top;
-      animation: rail-draw both linear;
-      animation-timeline: view(block);
-      animation-range: cover 12% cover 62%;
-    }
-  }
+.handover-timeline-rail {
+  left: 3.5px;
+  top: var(--handover-rail-top, 11.5px);
+  height: var(--handover-rail-height, calc(100% - 20px));
+  width: 2px;
+  z-index: 0;
+  background-color: var(--color-hairline-strong);
+  border-radius: 999px;
+  overflow: hidden;
 }
 
-@supports not (animation-timeline: view()) {
-  .rail-fill { transform: scaleY(1); }
+.handover-timeline .rail-fill {
+  height: var(--handover-rail-fill);
+  min-height: 0;
+  background-color: var(--color-primary);
+  box-shadow: 0 0 6px rgba(255, 90, 31, 0.48);
+  transition: height 80ms linear;
+  will-change: height;
+}
+
+/* Native details elements keep FAQs interactive on mobile even before the
+   JavaScript bundle has loaded. The inner grid gives the answer a smooth open
+   and close without relying on script-driven layout measurements. */
+.faq-accordion-answer {
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition: grid-template-rows 420ms var(--ease-out-quint),
+    opacity 260ms var(--ease-out-quint);
+}
+
+.faq-accordion-item[open] .faq-accordion-answer {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+
+.faq-accordion-item[open] .faq-accordion-icon {
+  transform: translateX(-50%) rotate(90deg);
+  opacity: 0;
+}
+
+/* These rules deliberately use the native `open` attribute rather than a
+   utility variant. That makes the mobile menu work before React hydrates and
+   prevents both menu icons being visible at once on mobile browsers. */
+.mobile-menu-close-icon,
+.mobile-menu-panel {
+  display: none;
+}
+
+.mobile-menu-toggle[open] .mobile-menu-close-icon,
+.mobile-menu-toggle[open] .mobile-menu-panel {
+  display: block;
+}
+
+.mobile-menu-toggle[open] .mobile-menu-open-icon {
+  display: none;
+}
+
+.handover-timeline-dot {
+  z-index: 1;
+  box-shadow: 0 0 0 1px rgba(255, 90, 31, 0.18);
+}
+
+.handover-timeline-dot.is-seen {
+  animation: handover-dot-pulse 640ms var(--ease-out-quint) both;
+}
+
+@keyframes handover-dot-pulse {
+  0% { opacity: 0.2; transform: scale(0.55); box-shadow: 0 0 0 0 rgba(255, 90, 31, 0.6); }
+  38% { opacity: 1; transform: scale(1.35); box-shadow: 0 0 0 10px rgba(255, 90, 31, 0); }
+  62% { opacity: 0.35; transform: scale(0.86); }
+  100% { transform: scale(1); box-shadow: 0 0 0 1px rgba(255, 90, 31, 0.18); }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .rail-fill { transform: scaleY(1); }
+  .handover-timeline .rail-fill { height: 100%; transition: none; }
 }
 
 /* 7. Cross-page view transitions, so navigation reads as one surface */
@@ -988,9 +2099,50 @@ h3 {
 
 img,
 svg,
-video {
+video,
+canvas,
+iframe {
+  display: block;
   max-width: 100%;
   height: auto;
+}
+
+/* Responsive guardrails: grids and flex rows may contain long merchant names,
+   ticket titles, and URLs. Let those items shrink or wrap instead of creating
+   horizontal scroll on narrow screens. */
+.grid > *,
+.flex > * {
+  min-width: 0;
+}
+
+input,
+select,
+textarea {
+  max-width: 100%;
+  min-width: 0;
+}
+
+p,
+li,
+a {
+  overflow-wrap: break-word;
+}
+
+pre {
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+@media (max-width: 640px) {
+  .btn-primary,
+  .btn-secondary {
+    min-height: 46px;
+  }
+
+  .handover-timeline {
+    margin-top: 2.5rem;
+  }
 }
 
 /* ==========================================================================

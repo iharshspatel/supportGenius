@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 
 /**
  * The hero's centrepiece: one merchant ticket walked through the lifecycle we
@@ -13,6 +13,16 @@ import { useEffect, useRef, useState } from "react";
  */
 
 const STEP_MS = 4200;
+
+function subscribeToReducedMotion(onStoreChange: () => void) {
+  const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+  mediaQuery.addEventListener("change", onStoreChange);
+  return () => mediaQuery.removeEventListener("change", onStoreChange);
+}
+
+function getReducedMotionSnapshot() {
+  return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+}
 
 const steps = [
   { key: "in", label: "Ticket in", time: "09:41" },
@@ -65,17 +75,12 @@ export default function TriageDemo() {
   const [paused, setPaused] = useState(false);
   const [manual, setManual] = useState(false);
   const [inView, setInView] = useState(false);
-  const [reduced, setReduced] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
-    setReduced(mq.matches);
-    if (mq.matches) setStep(steps.length - 1);
-    const onChange = () => setReduced(mq.matches);
-    mq.addEventListener("change", onChange);
-    return () => mq.removeEventListener("change", onChange);
-  }, []);
+  const reduced = useSyncExternalStore(
+    subscribeToReducedMotion,
+    getReducedMotionSnapshot,
+    () => false,
+  );
 
   useEffect(() => {
     const el = ref.current;
@@ -96,6 +101,7 @@ export default function TriageDemo() {
   }, [running, step]);
 
   const go = (i: number) => {
+    setPaused(true);
     setManual(true);
     setStep(i);
   };
@@ -105,7 +111,7 @@ export default function TriageDemo() {
       ref={ref}
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
-      className="relative overflow-hidden rounded-[18px] border border-hairline-night bg-canvas-night shadow-[0_40px_80px_-40px_rgba(26,23,20,0.55)]"
+      className="relative w-full max-w-full overflow-hidden rounded-[18px] border border-hairline-night bg-canvas-night shadow-[0_40px_80px_-40px_rgba(26,23,20,0.55)]"
     >
       {/* Window bar */}
       <div className="flex items-center justify-between gap-4 border-b border-white/8 px-4 py-3 sm:px-5">
@@ -233,8 +239,13 @@ export default function TriageDemo() {
               key={s.key}
               type="button"
               onClick={() => go(i)}
+              onTouchEnd={(event) => {
+                event.preventDefault();
+                go(i);
+              }}
               aria-current={active}
-              className="group relative px-2 py-3 text-left transition-colors hover:bg-white/[0.04] sm:px-4"
+              aria-pressed={active}
+              className="group relative touch-manipulation select-none px-2 py-3 text-left transition-colors hover:bg-white/[0.04] active:bg-white/[0.08] sm:px-4"
             >
               <span className="absolute inset-x-0 top-0 h-px bg-white/8" />
               {active && (

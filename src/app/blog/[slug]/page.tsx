@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
+import HeadingReveal from "../../components/HeadingReveal";
 
 type SectionItem = {
   id?: string;
@@ -261,15 +262,16 @@ export default async function BlogArticle({
       {/* 1. Article Header */}
       <section className="section-hero pt-14 pb-12 sm:pt-18 sm:pb-16 lg:pt-20 lg:pb-20">
         <div className="mx-auto max-w-[1280px] px-6 lg:px-8">
-          <div className="max-w-[48rem]">
+          <div className="max-w-[72rem]">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-canvas-soft border border-hairline text-xs font-medium text-ink mb-6">
               <span className="status-dot-green" />
               <span>{article.category}</span>
             </div>
-            <h1 className="display-xxl text-ink">
-              {article.title}
-            </h1>
-            <div className="mt-6 flex flex-wrap items-center gap-3 text-xs text-ink-mute">
+            <HeadingReveal
+              className="blog-page-heading blog-article-title display-xxl text-ink"
+              text={article.title}
+            />
+            <div className="blog-article-meta mt-6 flex flex-wrap items-center gap-3 text-xs text-ink-mute">
               <span className="font-medium text-ink">By {article.author}</span>
               <span>•</span>
               <span>{article.authorRole}</span>
@@ -287,7 +289,7 @@ export default async function BlogArticle({
       </section>
 
       {/* 2. Article Body (Centered Layout - No empty side void) */}
-      <div className="mx-auto max-w-4xl px-6 lg:px-8 py-12 sm:py-16">
+      <div className="mx-auto max-w-4xl px-5 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
         <article className="w-full">
           {/* Quick Answer Box */}
           <div className="card-feature-light border-l-4 border-l-primary bg-canvas-soft p-6 sm:p-7 mb-10">
@@ -325,7 +327,7 @@ export default async function BlogArticle({
           <div className="space-y-12">
             {article.sections.map((sec, idx) => (
               <section key={idx} id={sec.id} className="scroll-mt-24">
-                <h2 className="display-md text-ink mb-4">
+                <h2 className="blog-article-section-title display-md text-ink mb-4">
                   {sec.heading}
                 </h2>
 
@@ -423,7 +425,7 @@ export default async function BlogArticle({
             {/* Conclusion if present */}
             {article.conclusion && (
               <section id="conclusion" className="scroll-mt-24 pt-6 border-t border-hairline-cool">
-                <h2 className="display-md text-ink mb-4">
+                <h2 className="blog-article-section-title display-md text-ink mb-4">
                   {article.conclusion.heading}
                 </h2>
                 <p className="body-md text-ink-mute leading-relaxed">
@@ -475,22 +477,24 @@ export default async function BlogArticle({
           </div>
 
           {/* Conversion Block */}
-          <div className="mt-8 p-8 sm:p-10 rounded-xl card-feature-dark text-white">
+          <div className="blog-article-cta mt-10 overflow-hidden rounded-2xl card-feature-dark p-7 sm:p-9 lg:p-11 text-white">
             <span className="spotlight-glow" />
-            <h3 className="heading-lg text-white">
-              Not sure what support needs to change first?
-            </h3>
-            <p className="mt-3 body-sm text-ink-faint leading-relaxed">
-              A support assessment helps you identify the recurring questions, ownership gaps, and handoff
-              issues that are taking time away from your product team.
-            </p>
-            <div className="mt-6 flex flex-col sm:flex-row gap-4">
-              <Link href="/contact" className="btn-primary py-3 px-6 text-sm text-center">
-                Get a support assessment
-              </Link>
-              <Link href="/services" className="btn-secondary py-3 px-6 text-sm text-center">
-                Explore Shopify app support services
-              </Link>
+            <div className="relative max-w-[46rem]">
+              <h3 className="heading-lg text-white">
+                Not sure what support needs to change first?
+              </h3>
+              <p className="mt-3 body-sm text-ink-faint leading-relaxed">
+                A support assessment helps you identify the recurring questions, ownership gaps, and handoff
+                issues that are taking time away from your product team.
+              </p>
+              <div className="mt-7 flex flex-col sm:flex-row gap-3 sm:gap-4">
+                <Link href="/contact" className="btn-primary py-3 px-6 text-sm text-center">
+                  Get a support assessment
+                </Link>
+                <Link href="/services" className="btn-secondary py-3 px-6 text-sm text-center">
+                  Explore Shopify app support services
+                </Link>
+              </div>
             </div>
           </div>
         </article>

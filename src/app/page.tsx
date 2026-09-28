@@ -6,6 +6,8 @@ import ProblemGrid from "./components/ProblemGrid";
 import HireCompare from "./components/HireCompare";
 import ServiceGrid from "./components/ServiceGrid";
 import HandoverTimeline from "./components/HandoverTimeline";
+import ButtonFlip from "./components/ButtonFlip";
+import HeadingReveal from "./components/HeadingReveal";
 import { CALENDLY_BOOKING_URL } from "./lib/calendly";
 
 export const metadata: Metadata = {
@@ -89,28 +91,18 @@ const faqs = [
   },
 ];
 
-function Headline({ text }: { text: string }) {
-  return (
-    <h1 className="display-xxl">
-      {text.split(" ").map((word, i) => (
-        <span key={`${word}-${i}`} className="word-rise">
-          <span style={{ "--i": i } as React.CSSProperties}>{word}</span>
-          {i < text.split(" ").length - 1 ? " " : ""}
-        </span>
-      ))}
-    </h1>
-  );
-}
-
 export default function Home() {
   return (
-    <main className="text-ink">
+    <main className="min-w-0 max-w-full overflow-x-hidden text-ink">
       {/* ---------------------------------------------------------------- Hero */}
-      <section className="paper relative overflow-hidden">
-        <div className="mx-auto grid max-w-[1280px] gap-12 px-6 pt-16 pb-20 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)] lg:items-center lg:gap-16 lg:px-8 lg:pt-24 lg:pb-28">
-          <div>
+      <section className="home-hero paper relative max-w-full overflow-x-hidden">
+        <div className="mx-auto grid w-full min-w-0 max-w-[1280px] gap-12 px-6 pt-16 pb-20 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)] lg:items-center lg:gap-16 lg:px-8 lg:pt-24 lg:pb-28">
+          <div className="min-w-0">
             <div className="mt-5">
-              <Headline text="An on-demand support team for your shopify app." />
+              <HeadingReveal
+                className="display-xxl"
+                text="An on-demand support team for your shopify app."
+              />
             </div>
 
             <p
@@ -118,7 +110,7 @@ export default function Home() {
               style={{ animationDelay: "480ms" }}
             >
               Shopify Expert Support for $10/hour. Scale up when tickets spike,
-              scale down when they don't. No full-time hire, no retainer tier to
+              scale down when they don&apos;t. No full-time hire, no retainer tier to
               outgrow.
             </p>
 
@@ -127,7 +119,7 @@ export default function Home() {
               style={{ animationDelay: "620ms" }}
             >
               <Link href={CALENDLY_BOOKING_URL} className="btn-primary">
-                Book a 30-minute call
+                <ButtonFlip>Book a 30-minute call</ButtonFlip>
               </Link>
               <Link
                 href="/how-it-works"
@@ -138,7 +130,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="msg-in" style={{ animationDelay: "300ms" }}>
+          <div className="msg-in min-w-0" style={{ animationDelay: "300ms" }}>
             <TriageDemo />
             <p className="mt-3.5 text-center font-mono text-[10.5px] uppercase tracking-[0.1em] text-ink-mute-2">
               One ticket, start to finish. Click a step.
@@ -231,8 +223,8 @@ export default function Home() {
                 No setup fee · No per-ticket charge · Change hours any month
               </p>
 
-              <Link href={CALENDLY_BOOKING_URL} className="btn-primary btn-invert mt-9">
-                Book a 30-minute call
+              <Link href={CALENDLY_BOOKING_URL} className="btn-primary btn-dark-surface w-full sm:w-auto inline-flex justify-center mt-9">
+                <ButtonFlip>Book a 30-minute call</ButtonFlip>
               </Link>
             </div>
 
@@ -349,7 +341,7 @@ export default function Home() {
           </p>
           <div className="mt-9 flex flex-wrap items-center gap-x-7 gap-y-4">
             <Link href={CALENDLY_BOOKING_URL} className="btn-primary">
-              Book a 30-minute call
+              <ButtonFlip>Book a 30-minute call</ButtonFlip>
             </Link>
             <Link
               href="/blog"

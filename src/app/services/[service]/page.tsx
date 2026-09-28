@@ -2,6 +2,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import FaqAccordion from "../../components/FaqAccordion";
+import ButtonFlip from "../../components/ButtonFlip";
+import HeadingReveal from "../../components/HeadingReveal";
 import { CALENDLY_BOOKING_URL } from "../../lib/calendly";
 
 type ServiceData = {
@@ -345,27 +347,32 @@ export default async function ServicePage({
   }
 
   return (
-    <main className="min-h-screen text-ink bg-canvas">
+    <main className="service-detail-page min-h-screen text-ink bg-canvas">
       {/* 1. Hero Section */}
-      <section className="section-hero pt-14 pb-12 sm:pt-18 sm:pb-16 lg:pt-20 lg:pb-20">
-        <div className="mx-auto max-w-[1280px] px-6 lg:px-8">
-          <div className="max-w-[48rem]">
+      <section className="section-hero pt-14 pb-10 sm:pt-18 sm:pb-14 lg:pt-20 lg:pb-16">
+        <div className="service-detail-hero service-detail-container mx-auto max-w-[1280px] px-6 lg:px-8">
+          <div className="mx-auto max-w-[64rem] text-center">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-canvas-soft border border-hairline text-xs font-medium text-ink mb-6">
               <span className="status-dot-green" />
               <span>{data.badge}</span>
             </div>
-            <h1 className="display-xxl text-ink">
-              {data.h1}
-            </h1>
-            <p className="mt-5 body-lg text-ink-mute">
+            <HeadingReveal
+              className="service-detail-title mx-auto display-xxl text-ink"
+              text={data.h1}
+            />
+            <p className="mx-auto mt-5 max-w-[48rem] body-lg text-ink-mute">
               {data.heroSub}
             </p>
-            <div className="mt-8 flex flex-col sm:flex-row gap-4">
+            <div className="mt-8 flex flex-col sm:flex-row justify-center gap-4">
               <Link href={data.primaryCta.href} className="btn-primary py-3.5 px-7 text-base">
                 {data.primaryCta.label}
               </Link>
               <Link href={data.secondaryCta.href} className="btn-secondary py-3.5 px-7 text-base">
-                {data.secondaryCta.label}
+                {data.secondaryCta.href === CALENDLY_BOOKING_URL ? (
+                  <ButtonFlip>{data.secondaryCta.label}</ButtonFlip>
+                ) : (
+                  data.secondaryCta.label
+                )}
               </Link>
             </div>
           </div>
@@ -374,8 +381,8 @@ export default async function ServicePage({
 
       {/* 2. Context Section */}
       {data.contextSection && (
-        <section className="mx-auto max-w-[1280px] px-6 lg:px-8 py-16 sm:py-20 lg:py-24 border-t border-hairline-cool">
-          <div className="max-w-[48rem]">
+        <section className="service-detail-container mx-auto max-w-[1280px] px-6 lg:px-8 py-14 sm:py-16 lg:py-20 border-t border-hairline-cool">
+          <div className="service-detail-section-intro service-detail-context">
             <h2 className="display-xl text-ink">
               {data.contextSection.h2}
             </h2>
@@ -388,9 +395,9 @@ export default async function ServicePage({
 
       {/* 3. Deliverables Table (If Applicable) */}
       {data.deliverablesTable && (
-        <section className="section-dark-elevated py-16 sm:py-20 lg:py-24">
-          <div className="mx-auto max-w-[1280px] px-6 lg:px-8">
-            <div className="max-w-[48rem]">
+        <section className="section-dark-elevated py-14 sm:py-16 lg:py-20">
+          <div className="service-detail-container mx-auto max-w-[1280px] px-6 lg:px-8">
+            <div className="service-detail-section-intro">
               <h2 className="display-xl text-ink">
                 {data.deliverablesTable.h2}
               </h2>
@@ -400,7 +407,7 @@ export default async function ServicePage({
             </div>
 
             {/* Desktop Table View */}
-            <div className="mt-12 hidden md:block overflow-x-auto rounded-xl border border-hairline bg-canvas shadow-xs">
+            <div className="service-detail-data-card mt-12 hidden md:block overflow-x-auto rounded-xl border border-hairline bg-canvas shadow-xs">
               <table className="w-full text-left border-collapse">
                 <thead>
                   <tr className="border-b border-hairline-cool bg-canvas-soft">
@@ -431,7 +438,7 @@ export default async function ServicePage({
             </div>
 
             {/* Mobile Vertical Cards View (Up-down scroll, no horizontal cutoff) */}
-            <div className="mt-8 md:hidden space-y-4">
+            <div className="service-detail-data-card mt-8 md:hidden space-y-4">
               {data.deliverablesTable.items.map((row, i) => (
                 <div key={i} className="rounded-xl border border-hairline bg-canvas p-5 shadow-xs space-y-2">
                   <div className="flex items-center gap-2">
@@ -453,9 +460,9 @@ export default async function ServicePage({
 
       {/* 4. Bullet Section (What we build / Better escalation) */}
       {data.bulletSection && (
-        <section className="section-dark-elevated py-16 sm:py-20 lg:py-24">
-          <div className="mx-auto max-w-[1280px] px-6 lg:px-8">
-            <div className="max-w-[48rem]">
+        <section className="section-dark-elevated py-14 sm:py-16 lg:py-20">
+          <div className="service-detail-container mx-auto max-w-[1280px] px-6 lg:px-8">
+            <div className="service-detail-section-intro">
               <h2 className="display-xl text-ink">
                 {data.bulletSection.h2}
               </h2>
@@ -466,7 +473,7 @@ export default async function ServicePage({
               )}
             </div>
 
-            <div className="mt-10 grid gap-4 sm:grid-cols-2">
+            <div className="service-detail-card-grid mt-10 grid gap-4 sm:grid-cols-2">
               {data.bulletSection.items.map((item, i) => (
                 <div
                   key={i}
@@ -483,8 +490,8 @@ export default async function ServicePage({
 
       {/* 5. Handover Steps (If present) */}
       {data.handoverSteps && (
-        <section className="mx-auto max-w-[1280px] px-6 lg:px-8 py-16 sm:py-20 lg:py-24">
-          <div className="max-w-[48rem]">
+        <section className="service-detail-container mx-auto max-w-[1280px] px-6 lg:px-8 py-14 sm:py-16 lg:py-20">
+          <div className="service-detail-section-intro">
             <h2 className="display-xl text-ink">
               How the handover works
             </h2>
@@ -494,7 +501,7 @@ export default async function ServicePage({
             </p>
           </div>
 
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="service-detail-card-grid mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {data.handoverSteps.map((step) => (
               <div key={step.step} className="card-feature-light p-6 sm:p-7 flex flex-col justify-between">
                 <span className="spotlight-glow" />
@@ -513,9 +520,9 @@ export default async function ServicePage({
 
       {/* 6. Conversations & Sample Escalation Format (If present) */}
       {data.conversationsSection && (
-        <section className="border-t border-hairline-cool bg-canvas-soft py-16 sm:py-20 lg:py-24">
-          <div className="mx-auto max-w-[1280px] px-6 lg:px-8">
-            <div className="max-w-[48rem]">
+        <section className="border-t border-hairline-cool bg-canvas-soft py-14 sm:py-16 lg:py-20">
+          <div className="service-detail-container mx-auto max-w-[1280px] px-6 lg:px-8">
+            <div className="service-detail-section-intro">
               <h2 className="display-xl text-ink">
                 {data.conversationsSection.h2}
               </h2>
@@ -525,7 +532,7 @@ export default async function ServicePage({
             </div>
 
             {/* Proof Module: Sample Escalation Format */}
-            <div className="mt-12 max-w-[56rem] card-feature-dark p-6 sm:p-8 rounded-xl">
+            <div className="service-detail-proof mt-12 max-w-[56rem] card-feature-dark p-6 sm:p-8 rounded-xl">
               <div className="flex items-center justify-between pb-4 border-b border-[#333333]">
                 <div className="flex items-center gap-2.5">
                   <span className="status-dot-green" />
@@ -581,8 +588,8 @@ export default async function ServicePage({
 
       {/* 7. Collaboration Table: Support Handles vs Escalate to Team (If present) */}
       {data.collaborationTable && (
-        <section className="mx-auto max-w-[1280px] px-6 lg:px-8 py-16 sm:py-20 lg:py-24">
-          <div className="max-w-[48rem]">
+        <section className="service-detail-container mx-auto max-w-[1280px] px-6 lg:px-8 py-14 sm:py-16 lg:py-20">
+          <div className="service-detail-section-intro">
             <h2 className="display-xl text-ink">
               {data.collaborationTable.h2}
             </h2>
@@ -592,7 +599,7 @@ export default async function ServicePage({
           </div>
 
           {/* Desktop Table View */}
-          <div className="mt-12 hidden md:block overflow-x-auto rounded-xl border border-hairline bg-canvas shadow-xs">
+          <div className="service-detail-data-card mt-12 hidden md:block overflow-x-auto rounded-xl border border-hairline bg-canvas shadow-xs">
             <table className="w-full text-left border-collapse">
               <thead>
                 <tr className="border-b border-hairline-cool bg-canvas-soft">
@@ -626,7 +633,7 @@ export default async function ServicePage({
           </div>
 
           {/* Mobile Vertical Cards View (Up-down scroll, no horizontal cutoff) */}
-          <div className="mt-8 md:hidden space-y-4">
+          <div className="service-detail-data-card mt-8 md:hidden space-y-4">
             {data.collaborationTable.rows.map((row, i) => (
               <div key={i} className="rounded-xl border border-hairline bg-canvas p-5 shadow-xs space-y-3">
                 <div>
@@ -655,8 +662,8 @@ export default async function ServicePage({
 
       {/* 8. FAQs (If present) */}
       {data.faqs && (
-        <section className="border-t border-hairline-cool bg-canvas-soft py-16 sm:py-20 lg:py-24">
-          <div className="mx-auto max-w-[1280px] px-6 lg:px-8">
+        <section className="border-t border-hairline-cool bg-canvas-soft py-14 sm:py-16 lg:py-20">
+          <div className="service-detail-container mx-auto max-w-[1280px] px-6 lg:px-8">
             <div className="grid gap-8 lg:grid-cols-12 lg:items-start">
               <div className="lg:col-span-4">
                 <h2 className="heading-lg text-ink">
@@ -677,7 +684,7 @@ export default async function ServicePage({
 
       {/* 9. Bottom CTA Section */}
       <section className="border-t border-hairline-cool bg-canvas py-12 sm:py-16">
-        <div className="mx-auto max-w-[1280px] px-6 lg:px-8">
+        <div className="service-detail-container mx-auto max-w-[1280px] px-6 lg:px-8">
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 p-8 rounded-2xl bg-canvas-soft border border-hairline">
             <div>
               <h3 className="heading-md text-ink">Ready to get started?</h3>

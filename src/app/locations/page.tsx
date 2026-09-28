@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import HeadingReveal from "../components/HeadingReveal";
 
 export const metadata: Metadata = {
   title: "Global Shopify App Support Hubs | Support Genius",
@@ -40,19 +41,20 @@ const locationHubs = [
 
 export default function LocationsIndex() {
   return (
-    <main className="min-h-screen text-ink bg-canvas">
+    <main className="services-page min-h-screen text-ink bg-canvas">
       {/* Hero Section */}
-      <section className="section-hero pt-6 pb-12 sm:pt-8 sm:pb-16 lg:pt-10 lg:pb-20">
-        <div className="mx-auto max-w-[1280px] px-6 lg:px-8">
-          <div className="max-w-[48rem]">
+      <section className="section-hero pt-12 pb-14 sm:pt-16 sm:pb-18 lg:pt-20 lg:pb-20">
+        <div className="mx-auto max-w-[1280px] px-5 sm:px-6 lg:px-8">
+          <div className="max-w-[60rem]">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-canvas-soft border border-hairline text-xs font-medium text-ink mb-6">
               <span className="status-dot-green" />
               <span>Multi-Timezone Coverage</span>
             </div>
-            <h1 className="display-xxl text-ink">
-              Shopify App Support Built for Your Time Zone
-            </h1>
-            <p className="mt-5 body-lg text-ink-mute leading-relaxed">
+            <HeadingReveal
+              className="blog-page-heading max-w-[22ch] text-[#171717]"
+              text="Shopify App Support Built for Your Time Zone"
+            />
+            <p className="mt-5 body-lg text-ink-mute">
               Whether your founders and engineers are based in North America, Europe, or Asia-Pacific,
               Support Genius provides scheduled frontline merchant support tailored to your customer base.
             </p>
@@ -96,7 +98,8 @@ export default function LocationsIndex() {
         </div>
 
         {/* Global Remote Callout */}
-        <div className="mt-12 p-8 rounded-2xl bg-canvas-soft border border-hairline flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+        <div className="card-feature-light mt-12 p-8 rounded-2xl bg-canvas-soft border border-hairline flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+          <span className="spotlight-glow" />
           <div>
             <h3 className="heading-md text-ink">Work with a fully remote team?</h3>
             <p className="mt-1 body-sm text-ink-mute">

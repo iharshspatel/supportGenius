@@ -1,6 +1,8 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import FaqAccordion from "../components/FaqAccordion";
+import ButtonFlip from "../components/ButtonFlip";
+import HeadingReveal from "../components/HeadingReveal";
 import { CALENDLY_BOOKING_URL } from "../lib/calendly";
 
 export const metadata: Metadata = {
@@ -95,9 +97,10 @@ export default function HowItWorksPage() {
         <div className="mx-auto grid max-w-[1280px] gap-12 px-6 pb-16 pt-14 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:gap-16 lg:px-8 lg:pb-24 lg:pt-20">
           <div data-reveal>
             <p className="eyebrow">The handover</p>
-            <h1 className="display-xxl mt-4">
-              From first call to fully covered in five weeks
-            </h1>
+            <HeadingReveal
+              className="display-xxl mt-4"
+              text="From first call to fully covered in five weeks"
+            />
             <p className="mt-6 max-w-[40rem] text-[17.5px] leading-[1.62] text-ink-mute">
               Nobody drops into your inbox on day one and starts guessing.
               Three steps - and you are only hands-on for the first one.
@@ -105,7 +108,7 @@ export default function HowItWorksPage() {
 
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
               <Link href={CALENDLY_BOOKING_URL} className="btn-primary">
-                Book a 30-minute call
+                <ButtonFlip>Book a 30-minute call</ButtonFlip>
               </Link>
               <Link href="/services" className="btn-secondary">
                 See our services
@@ -288,7 +291,7 @@ export default function HowItWorksPage() {
             </p>
             <div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
               <Link href={CALENDLY_BOOKING_URL} className="btn-primary">
-                Book a 30-minute call
+                <ButtonFlip>Book a 30-minute call</ButtonFlip>
               </Link>
               <Link href="/services" className="btn-secondary">
                 See our services

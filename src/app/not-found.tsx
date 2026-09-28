@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import HeadingReveal from "./components/HeadingReveal";
 
 export const metadata: Metadata = {
   title: "Page Not Found | Support Genius",
@@ -15,9 +16,10 @@ export default function NotFound() {
   return (
     <main className="min-h-screen text-[#171717] bg-white flex items-center justify-center py-20 px-6">
       <div className="mx-auto max-w-[640px] text-center">
-        <h1 className="text-[32px] sm:text-[44px] font-medium text-[#171717] leading-[1.15] tracking-[-1.44px]">
-          This Page Is Not Here - But Support Can Still Be Simple
-        </h1>
+        <HeadingReveal
+          className="text-[32px] sm:text-[44px] font-medium text-[#171717] leading-[1.15] tracking-[-1.44px]"
+          text="This Page Is Not Here - But Support Can Still Be Simple"
+        />
         <p className="mt-5 text-[16px] sm:text-[18px] text-[#707070] leading-[1.55]">
           The link may be outdated, or the page may have moved. You can return to the home page,
           explore Shopify app support services, or find a practical guide in our resources.

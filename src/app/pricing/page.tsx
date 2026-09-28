@@ -1,6 +1,8 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import FaqAccordion from "../components/FaqAccordion";
+import ButtonFlip from "../components/ButtonFlip";
+import HeadingReveal from "../components/HeadingReveal";
 import { CALENDLY_BOOKING_URL } from "../lib/calendly";
 
 export const metadata: Metadata = {
@@ -78,9 +80,10 @@ export default function PricingPage() {
         <div className="mx-auto grid max-w-[1280px] gap-12 px-6 pb-16 pt-14 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:gap-16 lg:px-8 lg:pb-24 lg:pt-20">
           <div data-reveal>
             <p className="eyebrow">Pricing</p>
-            <h1 className="display-xxl mt-4">
-              $10 an hour. That is the whole price list.
-            </h1>
+            <HeadingReveal
+              className="display-xxl mt-4"
+              text="$10 an hour. That is the whole price list."
+            />
             <p className="mt-6 max-w-[40rem] text-[17.5px] leading-[1.62] text-ink-mute">
               Shopify support experts, billed by the hour at one flat rate. No
               tiers to outgrow, no per-ticket charge, and 30 days to change your
@@ -89,7 +92,7 @@ export default function PricingPage() {
 
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
               <Link href={CALENDLY_BOOKING_URL} className="btn-primary">
-                Book a 30-minute call
+                <ButtonFlip>Book a 30-minute call</ButtonFlip>
               </Link>
               <Link href="/how-it-works" className="btn-secondary">
                 See how the handover works
@@ -146,7 +149,7 @@ export default function PricingPage() {
             </div>
 
             <Link href={CALENDLY_BOOKING_URL} className="btn-primary mt-7 w-full">
-              Book a 30-minute call
+              <ButtonFlip>Book a 30-minute call</ButtonFlip>
             </Link>
           </div>
         </div>
@@ -154,10 +157,10 @@ export default function PricingPage() {
 
       {/* ------------------------------------------------------------ Guarantee */}
       <section className="section-night">
-        <div className="mx-auto max-w-[1280px] px-6 py-16 lg:px-8 lg:py-20">
+        <div className="mx-auto max-w-[1280px] px-6 py-14 lg:px-8 lg:py-16">
           <div
             data-reveal
-            className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] lg:items-center lg:gap-16"
+            className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] lg:items-start lg:gap-16"
           >
             <div>
               <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-primary-soft">
@@ -167,7 +170,7 @@ export default function PricingPage() {
                 30 days. If it is not working, you get your money back.
               </h2>
             </div>
-            <p className="text-[16px] leading-[1.65] text-white/60">
+            <p className="text-[16px] leading-[1.65] text-white/60 lg:pt-[1.9rem]">
               Handing over your inbox is a real risk, so we carry some of it.
               Give it a month. If the replies are not up to your standard, say
               so and we refund what you have paid for that period - no notice
@@ -222,7 +225,7 @@ export default function PricingPage() {
             </p>
             <div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
               <Link href={CALENDLY_BOOKING_URL} className="btn-primary">
-                Book a 30-minute call
+                <ButtonFlip>Book a 30-minute call</ButtonFlip>
               </Link>
               <Link href="/how-it-works" className="btn-secondary">
                 See how the handover works

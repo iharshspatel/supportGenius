@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { CALENDLY_BOOKING_URL } from "../lib/calendly";
+import HeadingReveal from "../components/HeadingReveal";
 
 export const metadata: Metadata = {
   title: "Thank You | Support Genius",
@@ -16,9 +17,10 @@ export default function ThankYouPage() {
   return (
     <main className="min-h-screen text-[#171717] bg-white flex items-center justify-center py-20 px-6">
       <div className="mx-auto max-w-[640px] text-center">
-        <h1 className="text-[32px] sm:text-[44px] font-medium text-[#171717] leading-[1.15] tracking-[-1.44px]">
-          Thanks - We Have Your Support Request
-        </h1>
+        <HeadingReveal
+          className="text-[32px] sm:text-[44px] font-medium text-[#171717] leading-[1.15] tracking-[-1.44px]"
+          text="Thanks - We Have Your Support Request"
+        />
         <p className="mt-5 text-[16px] sm:text-[18px] text-[#707070] leading-[1.55]">
           We have received your details. Our team will review the information you shared about your Shopify
           app and support setup, then follow up through your preferred contact method.

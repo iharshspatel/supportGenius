@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import HeadingReveal from "../components/HeadingReveal";
 
 export const metadata: Metadata = {
   title: "Privacy Policy | Support Genius",
@@ -67,9 +68,7 @@ export default function PrivacyPolicy() {
             <span>Legal &amp; Privacy Trust</span>
           </div>
 
-          <h1 className="display-xxl text-ink">
-            Privacy Policy
-          </h1>
+          <HeadingReveal className="display-xxl text-ink" text="Privacy Policy" />
 
           <div className="mt-4 flex items-center justify-center gap-2 text-xs font-mono uppercase tracking-wider text-ink-mute">
             <svg
@@ -164,7 +163,7 @@ export default function PrivacyPolicy() {
             </Link>
             <Link
               href="/contact"
-              className="btn-primary py-2.5 px-5 text-sm text-center justify-center"
+              className="btn-primary btn-dark-surface py-2.5 px-5 text-sm text-center justify-center"
             >
               Contact our team
             </Link>

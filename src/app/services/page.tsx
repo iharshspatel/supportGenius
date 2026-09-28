@@ -1,6 +1,8 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import FaqAccordion from "../components/FaqAccordion";
+import ButtonFlip from "../components/ButtonFlip";
+import HeadingReveal from "../components/HeadingReveal";
 import { CALENDLY_BOOKING_URL } from "../lib/calendly";
 
 export const metadata: Metadata = {
@@ -84,25 +86,26 @@ export default function Services() {
   ];
 
   return (
-    <main className="min-h-screen text-ink bg-canvas">
+    <main className="services-page min-h-screen text-ink bg-canvas">
       {/* 1. Hero Section */}
-      <section className="section-hero pt-14 pb-12 sm:pt-18 sm:pb-16 lg:pt-20 lg:pb-20">
-        <div className="mx-auto max-w-[1280px] px-6 lg:px-8">
-          <div className="max-w-[48rem]">
-            <h1 className="display-xxl text-ink">
-              Shopify App Support Services for Growing App Teams
-            </h1>
+      <section className="section-hero pt-12 pb-14 sm:pt-16 sm:pb-18 lg:pt-20 lg:pb-20">
+        <div className="mx-auto max-w-[1280px] px-5 sm:px-6 lg:px-8">
+          <div className="max-w-[60rem]">
+            <HeadingReveal
+              className="blog-page-heading max-w-[22ch] text-[#171717]"
+              text="Shopify App Support Services for Growing App Teams"
+            />
             <p className="mt-5 body-lg text-ink-mute">
               Support is not one task. It is a system of merchant conversations, product knowledge,
               technical triage, documentation, and feedback. Support Genius helps Shopify app
               teams build that system without asking founders to carry it alone.
             </p>
-            <div className="mt-8 flex flex-col sm:flex-row gap-4">
+            <div className="mt-8 flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
               <Link href="/contact" className="btn-primary py-3.5 px-7 text-base">
                 Get a support assessment
               </Link>
               <Link href={CALENDLY_BOOKING_URL} className="btn-secondary py-3.5 px-7 text-base">
-                Book a discovery call
+                <ButtonFlip>Book a discovery call</ButtonFlip>
               </Link>
             </div>
           </div>
@@ -110,8 +113,8 @@ export default function Services() {
       </section>
 
       {/* 2. Section: Choose the support outcomes you need */}
-      <section className="mx-auto max-w-[1280px] px-6 lg:px-8 py-16 sm:py-20 lg:py-24">
-        <div className="max-w-[48rem]">
+      <section className="services-hub-container mx-auto max-w-[1280px] px-6 lg:px-8 py-16 sm:py-20 lg:py-24">
+        <div className="services-hub-section-intro max-w-[48rem]">
           <h2 className="display-xl text-ink">
             Choose the support outcomes you need
           </h2>
@@ -122,20 +125,17 @@ export default function Services() {
         </div>
 
         {/* 5 Static Cards with Descriptive Text Links */}
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="services-hub-card-grid mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {serviceCards.map((service) => (
             <Link
               key={service.title}
               href={service.href}
-              className="card-feature-light p-6 sm:p-8 flex flex-col justify-between group hover:border-ink transition-colors"
+              className="services-hub-card card-feature-light p-6 sm:p-8 flex flex-col justify-between group hover:border-ink transition-colors"
             >
               <span className="spotlight-glow" />
               <div>
                 <div className="flex items-center justify-between">
                   <span className="badge-tag">{service.tag}</span>
-                  <span className="text-xs font-mono text-ink-mute group-hover:text-primary transition-colors">
-                    Explore &rarr;
-                  </span>
                 </div>
                 <h3 className="mt-4 heading-md text-ink group-hover:text-primary transition-colors">
                   {service.title}
@@ -154,9 +154,9 @@ export default function Services() {
       </section>
 
       {/* 3. Section: What a managed support system includes */}
-      <section id="knowledge-base-management" className="section-dark-elevated py-16 sm:py-20 lg:py-24 scroll-mt-20">
-        <div className="mx-auto max-w-[1280px] px-6 lg:px-8">
-          <div className="max-w-[48rem]">
+      <section id="knowledge-base-management" className="services-hub-surface section-dark-elevated py-16 sm:py-20 lg:py-24 scroll-mt-20">
+        <div className="services-hub-container mx-auto max-w-[1280px] px-6 lg:px-8">
+          <div className="services-hub-section-intro max-w-[48rem]">
             <h2 className="display-xl text-ink">
               What a managed support system includes
             </h2>
@@ -170,7 +170,7 @@ export default function Services() {
 
           {/* Scope Comparison Table: We own vs You retain */}
           {/* Desktop Table View */}
-          <div className="mt-12 hidden md:block overflow-x-auto rounded-xl border border-hairline bg-canvas shadow-xs">
+          <div className="services-hub-data-card mt-12 hidden md:block overflow-x-auto rounded-xl border border-hairline bg-canvas shadow-xs">
             <table className="w-full text-left border-collapse">
               <thead>
                 <tr className="border-b border-hairline-cool bg-canvas-soft">
@@ -204,7 +204,7 @@ export default function Services() {
           </div>
 
           {/* Mobile Vertical Cards View (Up-down scroll, no horizontal cutoff) */}
-          <div className="mt-8 md:hidden space-y-4">
+          <div className="services-hub-data-card mt-8 md:hidden space-y-4">
             {scopeComparison.map((row, i) => (
               <div key={i} className="rounded-xl border border-hairline bg-canvas p-5 shadow-xs space-y-3">
                 <div>
@@ -232,8 +232,8 @@ export default function Services() {
       </section>
 
       {/* 4. Section: How we get started / Support Operations Reporting */}
-      <section id="support-operations-reporting" className="mx-auto max-w-[1280px] px-6 lg:px-8 py-16 sm:py-20 lg:py-24 scroll-mt-20">
-        <div className="max-w-[48rem]">
+      <section id="support-operations-reporting" className="services-hub-container services-hub-plan mx-auto max-w-[1280px] px-6 lg:px-8 py-16 sm:py-20 lg:py-24 scroll-mt-20">
+        <div className="services-hub-section-intro max-w-[48rem]">
           <h2 className="display-xl text-ink">
             How we get started
           </h2>
@@ -242,7 +242,7 @@ export default function Services() {
             define the escalation rules, train against real tickets, and begin with a controlled handover.
             The goal is not just to answer more tickets. It is to make support easier to manage, measure, and improve.
           </p>
-          <div className="mt-8 flex flex-col sm:flex-row gap-4">
+          <div className="mt-8 flex flex-col sm:flex-row justify-center gap-4">
             <Link href={CALENDLY_BOOKING_URL} className="btn-primary py-3 px-6">
               Build your support plan
             </Link>
@@ -254,10 +254,10 @@ export default function Services() {
       </section>
 
       {/* 5. Section: Services FAQs */}
-      <section className="border-t border-hairline-cool bg-canvas-soft py-16 sm:py-20 lg:py-24">
-        <div className="mx-auto max-w-[1280px] px-6 lg:px-8">
-          <div className="grid gap-8 lg:grid-cols-12 lg:items-start">
-            <div className="lg:col-span-4">
+      <section className="services-hub-surface border-t border-hairline-cool bg-canvas-soft py-16 sm:py-20 lg:py-24">
+        <div className="services-hub-container mx-auto max-w-[1280px] px-6 lg:px-8">
+          <div className="services-hub-faq grid gap-8 lg:grid-cols-12 lg:items-start">
+            <div className="services-hub-faq-intro lg:col-span-4">
               <h2 className="heading-lg text-ink">
                 Services FAQs
               </h2>
@@ -271,14 +271,6 @@ export default function Services() {
             </div>
           </div>
 
-          <div className="mt-12 flex flex-col sm:flex-row gap-4 border-t border-hairline pt-8">
-            <Link href={CALENDLY_BOOKING_URL} className="btn-primary py-3 px-6">
-              Book a discovery call
-            </Link>
-            <Link href="/blog/when-to-outsource-shopify-app-support" className="btn-secondary py-3 px-6">
-              Read: When to outsource Shopify app support
-            </Link>
-          </div>
         </div>
       </section>
     </main>

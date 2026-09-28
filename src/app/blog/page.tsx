@@ -1,6 +1,8 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import ScrollReveal from "../components/ScrollReveal";
+import ButtonFlip from "../components/ButtonFlip";
+import HeadingReveal from "../components/HeadingReveal";
 import { CALENDLY_BOOKING_URL } from "../lib/calendly";
 
 export const metadata: Metadata = {
@@ -73,10 +75,11 @@ export default function BlogHub() {
       {/* Hero Section */}
       <section className="section-hero pt-12 pb-14 sm:pt-16 sm:pb-18 lg:pt-20 lg:pb-20">
         <div className="mx-auto max-w-[1280px] px-5 sm:px-6 lg:px-8">
-          <div className="max-w-[46rem]">
-            <h1 className="text-[32px] sm:text-[46px] lg:text-[60px] font-medium text-[#171717] leading-[1.12] tracking-[-1.5px] sm:tracking-[-1.92px]">
-              Practical Shopify App Support Resources
-            </h1>
+          <div className="max-w-[60rem]">
+            <HeadingReveal
+              className="blog-page-heading max-w-[22ch] text-[#171717]"
+              text="Practical Shopify App Support Resources"
+            />
             <p className="mt-5 text-[16px] sm:text-[18px] text-[#707070] leading-[1.55]">
               Better support is built from better questions, clearer systems, and honest product feedback.
               These guides help Shopify app founders make support easier to manage before - or alongside - outsourcing it.
@@ -109,7 +112,7 @@ export default function BlogHub() {
               <div className="mt-8">
                 <Link
                   href="/blog/when-to-outsource-shopify-app-support"
-                  className="btn-primary w-full sm:w-auto inline-flex justify-center"
+                  className="btn-primary btn-dark-surface w-full sm:w-auto inline-flex justify-center"
                 >
                   Read the guide
                 </Link>
@@ -199,7 +202,7 @@ export default function BlogHub() {
                 Get a support assessment
               </Link>
               <Link href={CALENDLY_BOOKING_URL} className="btn-secondary w-full sm:w-auto text-center">
-                Book a discovery call
+                <ButtonFlip>Book a discovery call</ButtonFlip>
               </Link>
             </div>
           </ScrollReveal>

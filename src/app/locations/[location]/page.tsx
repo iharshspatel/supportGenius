@@ -2,6 +2,9 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import FaqAccordion from "../../components/FaqAccordion";
+import ButtonFlip from "../../components/ButtonFlip";
+import HeadingReveal from "../../components/HeadingReveal";
+import { CALENDLY_BOOKING_URL } from "../../lib/calendly";
 
 type LocationDetail = {
   name: string;
@@ -122,24 +125,28 @@ export default async function LocationPage({
   }
 
   return (
-    <main className="min-h-screen text-ink bg-canvas">
+    <main className="location-detail-page min-h-screen text-ink bg-canvas">
       {/* 1. Hero Section */}
-      <section className="section-hero pt-14 pb-12 sm:pt-18 sm:pb-16 lg:pt-20 lg:pb-20">
-        <div className="mx-auto max-w-[1280px] px-6 lg:px-8">
-          <div className="max-w-[48rem]">
+      <section className="section-hero pt-12 pb-14 sm:pt-16 sm:pb-18 lg:pt-20 lg:pb-20">
+        <div className="mx-auto max-w-[1280px] px-5 sm:px-6 lg:px-8">
+          <div className="max-w-[60rem]">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-canvas-soft border border-hairline text-xs font-medium text-ink mb-6">
               <span className="status-dot-green" />
               <span>Location Coverage • {detail.name}</span>
             </div>
-            <h1 className="display-xxl text-ink">
-              Shopify App Support for Teams in {detail.name}
-            </h1>
+            <HeadingReveal
+              className="display-xxl text-ink"
+              text={`Shopify App Support for Teams in ${detail.name}`}
+            />
             <p className="mt-5 body-lg text-ink-mute">
               {detail.relevance}
             </p>
-            <div className="mt-8 flex flex-col sm:flex-row gap-4">
-              <Link href="/contact" className="btn-primary py-3.5 px-7 text-base">
-                Talk to a support specialist
+            <div className="mt-8 flex flex-col sm:flex-row flex-wrap gap-3 w-full sm:w-auto">
+              <Link href={CALENDLY_BOOKING_URL} className="btn-primary py-3.5 px-7 text-base">
+                <ButtonFlip>Book a call</ButtonFlip>
+              </Link>
+              <Link href="/contact" className="btn-secondary py-3.5 px-7 text-base">
+                Send an inquiry
               </Link>
               <Link href="/services" className="btn-secondary py-3.5 px-7 text-base">
                 Explore Shopify app support services
@@ -150,10 +157,10 @@ export default async function LocationPage({
       </section>
 
       {/* 2. Section: Local relevance */}
-      <section className="mx-auto max-w-[1280px] px-6 lg:px-8 py-16 sm:py-20 lg:py-24 border-t border-hairline-cool">
-        <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+      <section className="location-detail-container mx-auto max-w-[1280px] px-6 lg:px-8 py-16 sm:py-20 lg:py-24 border-t border-hairline-cool">
+        <div className="location-detail-relevance grid gap-12 lg:items-start">
           <div>
-            <h2 className="display-xl text-ink">
+            <h2 className="display-lg text-ink">
               Local market relevance &amp; ecosystem experience
             </h2>
             <p className="mt-5 body-lg text-ink-mute leading-relaxed">
@@ -165,9 +172,9 @@ export default async function LocationPage({
             </p>
           </div>
 
-          <div className="card-feature-dark p-7 sm:p-8 rounded-xl border border-[#2e2e2e]">
+          <div className="location-detail-coverage card-feature-dark p-7 sm:p-8 rounded-xl border border-[#2e2e2e]">
             <span className="spotlight-glow" />
-            <div className="flex items-center justify-between pb-4 border-b border-[#333333]">
+            <div className="location-detail-coverage-header flex items-center justify-between pb-4 border-b border-[#333333]">
               <div className="flex items-center gap-2">
                 <span className="status-dot-green" />
                 <span className="text-sm font-semibold text-white">Coverage Parameters</span>
@@ -176,7 +183,7 @@ export default async function LocationPage({
                 Active Region
               </span>
             </div>
-            <ul className="mt-6 space-y-4 text-xs font-mono text-[#dfdfdf]">
+            <ul className="location-detail-coverage-list mt-6 space-y-3 text-xs font-mono text-[#dfdfdf]">
               <li className="flex items-center gap-2.5">
                 <span className="text-primary">✔</span>
                 <span>Eastern &amp; Pacific business hour coverage</span>
@@ -200,8 +207,8 @@ export default async function LocationPage({
 
       {/* 3. Section: The same Shopify-aware support system, tailored to your team */}
       <section className="section-dark-elevated py-16 sm:py-20 lg:py-24">
-        <div className="mx-auto max-w-[1280px] px-6 lg:px-8">
-          <div className="max-w-[48rem]">
+        <div className="location-detail-container mx-auto max-w-[1280px] px-6 lg:px-8">
+          <div className="location-detail-system max-w-[48rem]">
             <h2 className="display-xl text-ink">
               The same Shopify-aware support system, tailored to your team
             </h2>
@@ -217,7 +224,7 @@ export default async function LocationPage({
 
       {/* 4. Local FAQs */}
       <section className="border-t border-hairline-cool bg-canvas-soft py-16 sm:py-20 lg:py-24">
-        <div className="mx-auto max-w-[1280px] px-6 lg:px-8">
+        <div className="location-detail-container mx-auto max-w-[1280px] px-6 lg:px-8">
           <div className="grid gap-8 lg:grid-cols-12 lg:items-start">
             <div className="lg:col-span-4">
               <h2 className="heading-lg text-ink">
@@ -231,15 +238,6 @@ export default async function LocationPage({
             <div className="lg:col-span-8">
               <FaqAccordion items={detail.faqs} />
             </div>
-          </div>
-
-          <div className="mt-12 flex flex-col sm:flex-row gap-4 border-t border-hairline pt-8">
-            <Link href="/contact" className="btn-primary py-3 px-6">
-              Talk to a support specialist
-            </Link>
-            <Link href="/services" className="btn-secondary py-3 px-6">
-              Explore Shopify app support services
-            </Link>
           </div>
         </div>
       </section>
